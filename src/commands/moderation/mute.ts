@@ -1,8 +1,10 @@
 module.exports = {
-  name: "kick",
-  permissions: 5,
+  name: "mute",
+  permission: 5,
   execute(msg, args) {
     const { Permissions, MessageEmbed } = require("discord.js");
+    const muteRole = msg.member.guild.roles.cache.get("759587936429277214");
+
     let person = msg.mentions.members.first();
     let reason;
     if (args.length > 1) {
@@ -12,27 +14,27 @@ module.exports = {
     }
 
     if (!person) {
-      msg.reply(`Ping someone to kick`);
+      msg.reply(`Ping someone to mute`);
     } else if (person.id == msg.author.id) {
       msg.reply(`baka`);
     } else if (person.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
-      msg.reply(`Don't kick an admin`);
+      msg.reply(`Don't mute an admin`);
     } else if (reason) {
-      person.kick({ reason: reason });
-      const kickEmbed = new MessageEmbed()
-        .setTitle("Kicked")
+      person.roles.add(muteRole, { reason: reason });
+      const muteEmbed = new MessageEmbed()
+        .setTitle("Muted")
         .addFields(
           { name: "User", value: `<@${person.id}>` },
           { name: "Reason", value: reason }
         );
-      msg.reply(kickEmbed).then((message) => {
+      msg.reply(muteEmbed).then((message) => {
         setTimeout(() => {
           message.delete();
         }, 8000);
       });
     } else {
-      person.kick();
-      msg.reply(`Kicked <@${person.id}>`);
+      person.roles.add(muteRole);
+      msg.reply(`Muted <@${person.id}>`);
     }
   },
 };
