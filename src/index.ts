@@ -1,5 +1,7 @@
-const { Client, Intents } = require("discord.js");
+const { Client, Intents, Collection } = require("discord.js");
 const client = new Client({ intents: [Intents.ALL] });
+
+const fs = require("fs");
 
 const { token, prefix } = require("../config.json");
 
@@ -10,6 +12,20 @@ client.on(`ready`, () => {
   // Add commands to Collection
   const { commandHandler } = require("./commandHandler.ts");
   commandHandler(client);
+
+  // Add slash commands to collection
+  client.slashCommands = new Collection();
+  try {
+    const files = fs
+      .readdirSync(`./src/slash/`)
+      .filter((file) => file.endsWith(".ts"));
+    for (const file of files) {
+      const command = require(`./slash/${file}`);
+      client.slashCommands.set(command.name, command);
+    }
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 client.on(`message`, async (msg) => {
@@ -137,7 +153,9 @@ client.on(`message`, async (msg) => {
 });
 
 client.on(`interaction`, (interaction) => {
-  console.log(interaction);
+  if (!interaction.isCommand()) return;
+  const { slashHandler } = require("./slashHandler.ts");
+  slashHandler(interaction, client);
 });
 
 client.login(token);
