@@ -3,7 +3,6 @@ module.exports = {
     const { Collection } = require("discord.js");
     const fs = require("fs");
 
-    // Searches through "./commands" for files ending in .ts
     client.commands = new Collection();
 
     try {
