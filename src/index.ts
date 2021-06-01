@@ -52,8 +52,6 @@ client.on(`ready`, () => {
 });
 
 client.on(`message`, async (msg) => {
-  const { Permissions } = require("discord.js");
-
   if (msg.author.bot) return;
   if (msg.channel.type === "dm") return;
 
