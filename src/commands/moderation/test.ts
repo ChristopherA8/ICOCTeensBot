@@ -1,7 +1,8 @@
 module.exports = {
   name: "test",
-  permissions: 5,
+  permissions: 9,
   execute(msg) {
-    msg.reply(`sussy ba...`);
+    const { embed } = require("../../helpers/embed.ts");
+    msg.channel.send(embed("ur mom", null, null, "hi", null, null, null, null));
   },
 };
