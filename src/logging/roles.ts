@@ -1,9 +1,10 @@
 module.exports = {
   log(client) {
+    const AUDIT_LOG_ID = "849126700763447367";
     const { embed } = require("../helpers/embed.ts");
     client.on("roleCreate", (newRole) => {
       if (newRole.guild.id !== "698590629344575500") return;
-      const channel = newRole.guild.channels.cache.get("849126700763447367");
+      const channel = newRole.guild.channels.cache.get(AUDIT_LOG_ID);
       // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
       channel.send(
         embed(
@@ -22,7 +23,7 @@ module.exports = {
 
     client.on("roleDelete", (oldRole) => {
       if (oldRole.guild.id !== "698590629344575500") return;
-      const channel = oldRole.guild.channels.cache.get("849126700763447367");
+      const channel = oldRole.guild.channels.cache.get(AUDIT_LOG_ID);
       // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
       channel.send(
         embed(
@@ -41,7 +42,7 @@ module.exports = {
 
     client.on("roleUpdate", (before, after) => {
       if (before.guild.id !== "698590629344575500") return;
-      const channel = before.guild.channels.cache.get("849126700763447367");
+      const channel = before.guild.channels.cache.get(AUDIT_LOG_ID);
 
       if (before.name !== after.name) {
         // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)

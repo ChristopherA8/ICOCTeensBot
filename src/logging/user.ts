@@ -1,9 +1,10 @@
 module.exports = {
   log(client) {
+    const AUDIT_LOG_ID = "849126700763447367";
     const { embed } = require("../helpers/embed.ts");
     client.on("guildMemberUpdate", async (before, after) => {
       if (after.guild.id !== `698590629344575500`) return;
-      const channel = before.guild.channels.cache.get("849126700763447367");
+      const channel = before.guild.channels.cache.get(AUDIT_LOG_ID);
 
       // Check for removed role
       before.roles.cache.forEach((beforeRole) => {
@@ -71,7 +72,7 @@ module.exports = {
 
     client.on(`userUpdate`, (before, after) => {
       const channel = before.client.channels.cache.find(
-        (channel) => channel.id === `849126700763447367`
+        (channel) => channel.id === AUDIT_LOG_ID
       );
 
       if (before.username !== after.username) {

@@ -1,11 +1,12 @@
 module.exports = {
   log(client) {
+    const AUDIT_LOG_ID = "849126700763447367";
     const { embed } = require("../helpers/embed.ts");
     client.on("channelCreate", (newChannel) => {
       if (newChannel.type == "dm") return;
       if (newChannel.guild.id !== "698590629344575500") return;
 
-      const channel = newChannel.guild.channels.cache.get("849126700763447367");
+      const channel = newChannel.guild.channels.cache.get(AUDIT_LOG_ID);
       // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
       channel.send(
         embed(
@@ -26,7 +27,7 @@ module.exports = {
       if (oldChannel.type == "dm") return;
       if (oldChannel.guild.id !== "698590629344575500") return;
 
-      const channel = oldChannel.guild.channels.cache.get("849126700763447367");
+      const channel = oldChannel.guild.channels.cache.get(AUDIT_LOG_ID);
       // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
       channel.send(
         embed(
@@ -45,7 +46,7 @@ module.exports = {
 
     client.on(`channelUpdate`, (before, after) => {
       if (after.guild.id !== `698590629344575500`) return; // Ignore emoji servers
-      const channel = before.guild.channels.cache.get(`849126700763447367`);
+      const channel = before.guild.channels.cache.get(AUDIT_LOG_ID);
 
       if (after.name !== before.name) {
         // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
