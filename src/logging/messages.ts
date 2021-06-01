@@ -61,33 +61,10 @@ module.exports = {
             null,
             null,
             `Author  ${before.author.tag}`,
-            null,
-            null,
-            null,
-            "#47a8e8",
-            null
-          )
-        );
-        channel.send(
-          embed(
-            null,
-            null,
-            null,
-            `${before.content.substring(0, 1900)}`,
-            null,
-            null,
-            null,
-            "#47a8e8",
-            null
-          )
-        );
-        channel.send(
-          embed(
-            null,
-            null,
-            null,
-            `${after.content.substring(0, 1900)}`,
-            null,
+            [
+              { name: "Before", value: before.content.substring(0, 1900) },
+              { name: "After", value: after.content.substring(0, 1900) },
+            ],
             null,
             null,
             "#47a8e8",
