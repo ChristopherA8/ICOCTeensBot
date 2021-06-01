@@ -9,6 +9,15 @@ client.on(`ready`, () => {
   console.log(`Logged in as ${client.user.tag}`);
   client.user.setActivity(`/help`, { type: "LISTENING" });
 
+  // Logging
+  const files = fs
+    .readdirSync(`./src/logging`)
+    .filter((file) => file.endsWith(".ts"));
+  for (const file of files) {
+    const { log } = require(`../src/logging/${file}`);
+    log(client);
+  }
+
   // Add commands to Collection
   client.commands = new Collection();
 
