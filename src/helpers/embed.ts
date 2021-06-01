@@ -18,11 +18,7 @@ module.exports = {
     if (description) embed.setDescription(description);
     if (fields) {
       for (const field of fields) {
-        embed.addField({
-          name: field.name,
-          value: field.value,
-          inline: field.inline,
-        });
+        embed.addField(field.name, field.value, field.inline);
       }
     }
     if (footer) embed.setFooter(footer);
