@@ -1,6 +1,6 @@
 module.exports = {
   log(client) {
-    const AUDIT_LOG_ID = "849126700763447367";
+    const AUDIT_LOG_ID = "759967435309842494";
     const { embed } = require("../helpers/embed.ts");
     client.on("channelCreate", (newChannel) => {
       if (newChannel.type == "dm") return;

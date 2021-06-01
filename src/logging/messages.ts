@@ -1,6 +1,6 @@
 module.exports = {
   log(client) {
-    const MESSAGE_LOG_ID = "849126730806853703";
+    const MESSAGE_LOG_ID = "768882922379280464";
     const { embed } = require("../helpers/embed.ts");
 
     client.on("messageDelete", (message) => {
