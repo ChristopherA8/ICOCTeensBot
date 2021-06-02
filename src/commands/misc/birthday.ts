@@ -1,6 +1,6 @@
 module.exports = {
   name: "birthday",
-  permissions: 2,
+  permissions: 1,
   execute(msg, args) {
     const fs = require("fs");
     const data = fs.readFileSync("./src/databases/birthdays.json");
@@ -14,7 +14,7 @@ module.exports = {
       }
 
     if (!args[0]) {
-      msg.reply("Don't forget the month and date, like this (2/28)");
+      msg.reply("Don't forget the month and date, like this '2/28'");
       return;
     }
 
