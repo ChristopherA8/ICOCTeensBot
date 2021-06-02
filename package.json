@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "better-sqlite3": "^7.4.0",
     "cloudconvert": "^2.2.4",
     "discord.js": "github:discordjs/discord.js",
     "discord.js-poll-embed": "^1.0.2"
