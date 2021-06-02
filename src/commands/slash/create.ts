@@ -1,14 +1,13 @@
 module.exports = {
   name: "create",
-  permissions: 10,
+  permissions: 9,
   async execute(msg) {
     /* Slash command ids
      * /help - 848977211130380358
      */
-
     const data = {
       name: "help",
-      description: "Get list of bot commands",
+      description: "Get list of commands",
     };
 
     const command = await msg.client.guilds.cache
