@@ -1,20 +1,28 @@
 module.exports = {
   async setup(client) {
-    /*     const guild = client.guilds.cache.get("698590629344575500");
+    const guild = client.guilds.cache.get("698590629344575500");
     const birthdayRole = guild.roles.cache.get("832022073366806531");
     const fs = require("fs");
 
-    let now = new Date();
-    console.log(`${now.getMonth()}/${now.getDay()}`);
-
     setInterval(() => {
       let now = new Date();
-      console.log(`${now.getDay()}/${now.getMonth()}`);
+      let monthDay = now.getMonth() + 1 + "/" + now.getDate();
+
       let raw = fs.readFileSync("./src/databases/birthdays.json");
       let birthdays = JSON.parse(raw);
+
+      // let membersWithRole = guild.members.cache.filter((member) =>
+      //   member.roles.cache.has("832022073366806531")
+      // );
+
       for (const person of birthdays) {
-        // if (person.date == )
+        if (person.date == monthDay) {
+          let member = guild.members.cache.get(person.id);
+          member.roles.add(birthdayRole);
+        }
       }
-    }, 60 * 60 * 1000); // 1 hr */
+    }, 60 * 60 * 1000);
+    // 60 * 60 * 1000
+    // 1hr in milliseconds
   },
 };
