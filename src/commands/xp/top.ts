@@ -60,7 +60,7 @@ module.exports = {
           }
           message.edit(embed);
         }
-        if (reaction.emoji.name === "▶" && end < 20) {
+        if (reaction.emoji.name === "▶" && end < 50) {
           start += 5;
           end += 5;
           embed.fields = [];
