@@ -9,51 +9,28 @@ client.on(`ready`, () => {
   console.log(`Logged in as ${client.user.tag}`);
   client.user.setActivity(`/help`, { type: "LISTENING" });
 
-  // Logging
+  // Run setup
   const files = fs
-    .readdirSync(`./src/logging`)
+    .readdirSync(`./src/setup`)
     .filter((file) => file.endsWith(".ts"));
   for (const file of files) {
-    const { log } = require(`../src/logging/${file}`);
-    log(client);
-  }
-
-  // Add commands to Collection
-  client.commands = new Collection();
-
-  try {
-    const folders = fs.readdirSync("./src/commands");
-    for (const folder of folders) {
-      const files = fs
-        .readdirSync(`./src/commands/${folder}`)
-        .filter((file) => file.endsWith(".ts"));
-      for (const file of files) {
-        const command = require(`../src/commands/${folder}/${file}`);
-        client.commands.set(command.name, command);
-      }
-    }
-  } catch (err) {
-    console.error(err);
-  }
-
-  // Add slash commands to collection
-  client.slashCommands = new Collection();
-  try {
-    const files = fs
-      .readdirSync(`./src/slash/`)
-      .filter((file) => file.endsWith(".ts"));
-    for (const file of files) {
-      const command = require(`./slash/${file}`);
-      client.slashCommands.set(command.name, command);
-    }
-  } catch (err) {
-    console.error(err);
+    const { setup } = require(`../src/setup/${file}`);
+    setup(client);
   }
 });
 
 client.on(`message`, async (msg) => {
   if (msg.author.bot) return;
   if (msg.channel.type === "dm") return;
+
+  // Message Listeners
+  const files = fs
+    .readdirSync(`./src/listeners`)
+    .filter((file) => file.endsWith(".ts"));
+  for (const file of files) {
+    const { listen } = require(`../src/listeners/${file}`);
+    listen(msg);
+  }
 
   const { commandHandler } = require("./commandHandler.ts");
   commandHandler(msg, prefix);
