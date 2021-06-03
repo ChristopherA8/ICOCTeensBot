@@ -12,6 +12,7 @@ module.exports = {
     sql.prepare(
       "INSERT OR REPLACE INTO scores (id, user, guild, points, level, name) VALUES (@id, @user, @guild, @points, @level, @name);"
     );
+
     if (!ping) {
       let score = sql
         .prepare("SELECT * FROM scores WHERE user = ? AND guild = ?")
@@ -26,8 +27,8 @@ module.exports = {
           msg.author.displayAvatarURL({ dynamic: true })
         )
         .addFields(
-          { name: "XP", value: score.points, inline: true },
-          { name: "Level", value: score.level, inline: true }
+          { name: "XP", value: `${score.points}`, inline: true },
+          { name: "Level", value: `${score.level}`, inline: true }
         )
         .setColor("#47a8e8");
       msg.reply(embed);
@@ -42,8 +43,8 @@ module.exports = {
       const embed = new MessageEmbed()
         .setAuthor(ping.user.tag, ping.user.displayAvatarURL({ dynamic: true }))
         .addFields(
-          { name: "XP", value: score.points, inline: true },
-          { name: "Level", value: score.level, inline: true }
+          { name: "XP", value: `${score.points}`, inline: true },
+          { name: "Level", value: `${score.level}`, inline: true }
         )
         .setColor("#47a8e8");
       msg.reply(embed);
