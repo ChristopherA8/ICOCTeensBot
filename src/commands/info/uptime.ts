@@ -1,6 +1,7 @@
 module.exports = {
   name: "uptime",
   category: "info",
+  description: "How long the bot has been running",
   permissions: 1,
   execute(msg) {
     const {

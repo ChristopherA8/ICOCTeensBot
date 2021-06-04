@@ -1,6 +1,7 @@
 module.exports = {
   name: "birthdays",
   category: "info",
+  description: "Lists members birthdays",
   permissions: 1,
   execute(msg) {
     const fs = require("fs");

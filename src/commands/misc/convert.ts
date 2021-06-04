@@ -1,6 +1,7 @@
 module.exports = {
   name: "convert",
   category: "misc",
+  description: "Convert the attached file to the given file type",
   permissions: 1,
   async execute(msg, args) {
     const { cloudConvertToken } = require("../../../config.json");

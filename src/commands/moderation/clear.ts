@@ -1,6 +1,7 @@
 module.exports = {
   name: "clear",
   category: "moderation",
+  description: "Bulk delete messages",
   permissions: 5,
   execute(msg, args) {
     let amount = args[0] ? parseInt(args[0], 10) : null;

@@ -1,6 +1,7 @@
 module.exports = {
   name: "kick",
   category: "moderation",
+  description: "Kick a member",
   permissions: 5,
   execute(msg, args) {
     const { Permissions, MessageEmbed } = require("discord.js");

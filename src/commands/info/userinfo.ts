@@ -1,6 +1,8 @@
 module.exports = {
   name: "userinfo",
   category: "info",
+  description:
+    "Gets your user info, you can also ping someone to get their info",
   permisions: 1,
   execute(msg) {
     const { MessageEmbed } = require("discord.js");

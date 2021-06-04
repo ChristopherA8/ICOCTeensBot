@@ -1,6 +1,8 @@
 module.exports = {
   name: "birthday",
   category: "misc",
+  description:
+    "Add your birthday. The bot will give you the birthday role on your birthday. Give month and day, example: 2/12 not 02/12",
   permissions: 1,
   execute(msg, args) {
     const fs = require("fs");

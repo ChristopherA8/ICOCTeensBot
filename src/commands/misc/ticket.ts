@@ -1,6 +1,7 @@
 module.exports = {
   name: "ticket",
   category: "misc",
+  description: "Send a message to <#698594785803501629>",
   permissions: 1,
   async execute(msg, args) {
     const { MessageEmbed } = require("discord.js");

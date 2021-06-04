@@ -1,6 +1,7 @@
 module.exports = {
   name: "roles",
   category: "info",
+  description: "Lists all server roles",
   permissions: 1,
   execute(msg) {
     const { MessageEmbed } = require("discord.js");
