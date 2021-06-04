@@ -20,16 +20,22 @@ module.exports = {
       created = ping.user.createdAt.toString().replace(/\([^)]*\)/g, "");
       joined = ping.joinedAt.toString().replace(/\([^)]*\)/g, "");
       embed = new MessageEmbed()
-        .setAuthor(ping.user.tag)
+        .setAuthor(`${ping.user.tag}`)
         .setColor("#47a8e8")
-        .setDescription(ping)
+        .setDescription(`${ping}`)
         .addFields(
-          { name: "Created", value: created, inline: true },
-          { name: "Joined", value: joined, inline: true },
-          { name: "Nickname", value: ping.displayName, inline: true },
-          { name: "Roles", value: roles ? roles : "No Roles", inline: false }
+          { name: "Created", value: `${created}`, inline: true },
+          { name: "Joined", value: `${joined}`, inline: true },
+          { name: "Nickname", value: `${ping.displayName}`, inline: true },
+          {
+            name: "Roles",
+            value: `${roles ? roles : "No Roles"}`,
+            inline: false,
+          }
         )
-        .setThumbnail(ping.user.displayAvatarURL({ dynamic: true, size: 128 }));
+        .setThumbnail(
+          `${ping.user.displayAvatarURL({ dynamic: true, size: 128 })}`
+        );
     } else {
       msg.member.roles.cache.map((r) =>
         r.name != "@everyone" ? (roles += `${r} `) : ""
@@ -37,17 +43,25 @@ module.exports = {
       created = msg.author.createdAt.toString().replace(/\([^)]*\)/g, "");
       joined = msg.member.joinedAt.toString().replace(/\([^)]*\)/g, "");
       embed = new MessageEmbed()
-        .setAuthor(msg.author.tag)
+        .setAuthor(`${msg.author.tag}`)
         .setColor("#47a8e8")
-        .setDescription(msg.member)
+        .setDescription(`${msg.member}`)
         .addFields(
-          { name: "Created", value: created, inline: true },
-          { name: "Joined", value: joined, inline: true },
-          { name: "Nickname", value: msg.member.displayName, inline: true },
-          { name: "Roles", value: roles ? roles : "No Roles", inline: false }
+          { name: "Created", value: `${created}`, inline: true },
+          { name: "Joined", value: `${joined}`, inline: true },
+          {
+            name: "Nickname",
+            value: `${msg.member.displayName}`,
+            inline: true,
+          },
+          {
+            name: "Roles",
+            value: `${roles ? roles : "No Roles"}`,
+            inline: false,
+          }
         )
         .setThumbnail(
-          msg.author.displayAvatarURL({ dynamic: true, size: 128 })
+          `${msg.author.displayAvatarURL({ dynamic: true, size: 128 })}`
         );
     }
 
