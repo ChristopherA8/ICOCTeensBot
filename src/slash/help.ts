@@ -32,7 +32,12 @@ module.exports = {
       }
     }
     let page = 1;
-    const embed = new MessageEmbed().setAuthor("Info");
+    const embed = new MessageEmbed()
+      .setTitle("Info")
+      .setColor("#47a8e8")
+      .setFooter(
+        `Page ${page}/4  |  Total Commands ${interaction.client.commands.size}`
+      );
     for (const command of info) {
       let com = command[1];
       embed.addField(
@@ -70,47 +75,63 @@ module.exports = {
         embed.fields = [];
         switch (page) {
           case 1:
-            embed.setAuthor("Info");
+            embed.setTitle("Info");
             for (const command of info) {
               let com = command[1];
-              embed.addField(
-                com.name,
-                com.description ? com.description : "No Description",
-                true
-              );
+              embed
+                .addField(
+                  com.name,
+                  com.description ? com.description : "No Description",
+                  true
+                )
+                .setFooter(
+                  `Page ${page}/4  |  Total Commands ${interaction.client.commands.size}`
+                );
             }
             break;
           case 2:
-            embed.setAuthor("Misc");
+            embed.setTitle("Misc");
             for (const command of misc) {
               let com = command[1];
-              embed.addField(
-                com.name,
-                com.description ? com.description : "No Description",
-                true
-              );
+              embed
+                .addField(
+                  com.name,
+                  com.description ? com.description : "No Description",
+                  true
+                )
+                .setFooter(
+                  `Page ${page}/4  |  Total Commands ${interaction.client.commands.size}`
+                );
             }
             break;
           case 3:
-            embed.setAuthor("XP");
+            embed.setTitle("XP");
             for (const command of xp) {
               let com = command[1];
-              embed.addField(
-                com.name,
-                com.description ? com.description : "No Description",
-                true
-              );
+              embed
+                .addField(
+                  com.name,
+                  com.description ? com.description : "No Description",
+                  true
+                )
+                .setFooter(
+                  `Page ${page}/4  |  Total Commands ${interaction.client.commands.size}`
+                );
             }
             break;
           case 4:
-            embed.setAuthor("Moderation");
+            embed.setTitle("Moderation");
             for (const command of moderation) {
               let com = command[1];
-              embed.addField(
-                com.name,
-                com.description ? com.description : "No Description",
-                true
-              );
+              embed
+                .addField(
+                  com.name,
+                  com.description ? com.description : "No Description",
+                  true
+                )
+                .setFooter(
+                  `Page ${page}/4  |  Total Commands ${interaction.client.commands.size}`
+                );
             }
             break;
           default:
