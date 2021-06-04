@@ -2,8 +2,8 @@ module.exports = {
   name: "help",
   execute(interaction) {
     const { MessageEmbed } = require("discord.js");
-    let categories = ["info", "xp", "misc", "moderation"];
-    let info, xp, misc, moderation;
+    let categories = ["info", "xp", "misc", "moderation", "voice"];
+    let info, xp, misc, moderation, voice;
 
     for (const category of categories) {
       switch (category) {
@@ -27,6 +27,11 @@ module.exports = {
             (command) => command.category == category
           );
           break;
+        case "voice":
+          voice = interaction.client.commands.filter(
+            (command) => command.category == category
+          );
+          break;
         default:
           break;
       }
@@ -36,7 +41,7 @@ module.exports = {
       .setTitle("Info")
       .setColor("#47a8e8")
       .setFooter(
-        `Page ${page}/4  |  Total Commands ${interaction.client.commands.size}`
+        `Page ${page}/5  |  Total Commands ${interaction.client.commands.size}`
       );
     for (const command of info) {
       let com = command[1];
@@ -71,7 +76,7 @@ module.exports = {
           console.error("Failed to remove reactions.");
         }
         if (reaction.emoji.name === "◀" && page > 1) page--;
-        if (reaction.emoji.name === "▶" && page < 4) page++;
+        if (reaction.emoji.name === "▶" && page < 5) page++;
         embed.fields = [];
         switch (page) {
           case 1:
@@ -85,7 +90,7 @@ module.exports = {
                   true
                 )
                 .setFooter(
-                  `Page ${page}/4  |  Total Commands ${interaction.client.commands.size}`
+                  `Page ${page}/5  |  Total Commands ${interaction.client.commands.size}`
                 );
             }
             break;
@@ -100,7 +105,7 @@ module.exports = {
                   true
                 )
                 .setFooter(
-                  `Page ${page}/4  |  Total Commands ${interaction.client.commands.size}`
+                  `Page ${page}/5  |  Total Commands ${interaction.client.commands.size}`
                 );
             }
             break;
@@ -115,7 +120,7 @@ module.exports = {
                   true
                 )
                 .setFooter(
-                  `Page ${page}/4  |  Total Commands ${interaction.client.commands.size}`
+                  `Page ${page}/5  |  Total Commands ${interaction.client.commands.size}`
                 );
             }
             break;
@@ -130,7 +135,22 @@ module.exports = {
                   true
                 )
                 .setFooter(
-                  `Page ${page}/4  |  Total Commands ${interaction.client.commands.size}`
+                  `Page ${page}/5  |  Total Commands ${interaction.client.commands.size}`
+                );
+            }
+            break;
+          case 5:
+            embed.setTitle("Voice");
+            for (const command of voice) {
+              let com = command[1];
+              embed
+                .addField(
+                  com.name,
+                  com.description ? com.description : "No Description",
+                  true
+                )
+                .setFooter(
+                  `Page ${page}/5  |  Total Commands ${interaction.client.commands.size}`
                 );
             }
             break;
