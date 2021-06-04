@@ -1,6 +1,7 @@
 module.exports = {
   name: "top",
   category: "xp",
+  description: "Get XP Leaderboard",
   permissions: 1,
   execute(msg) {
     const { MessageEmbed } = require("discord.js");
