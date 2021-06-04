@@ -14,13 +14,17 @@ module.exports = {
     const embed = new MessageEmbed()
       .setAuthor(`${msg.guild.name}`)
       .addFields(
-        { name: "Member Count", value: members.size, inline: true },
-        { name: "Created At", value: created, inline: true },
-        { name: "Owner", value: await msg.guild.fetchOwner(), inline: false },
-        { name: "Boost Lvl", value: msg.guild.premiumTier, inline: true },
+        { name: "Member Count", value: `${members.size}`, inline: true },
+        { name: "Created At", value: `${created}`, inline: true },
+        {
+          name: "Owner",
+          value: `${await msg.guild.fetchOwner()}`,
+          inline: false,
+        },
+        { name: "Boost Lvl", value: `${msg.guild.premiumTier}`, inline: true },
         {
           name: "Boosts",
-          value: msg.guild.premiumSubscriptionCount,
+          value: `${msg.guild.premiumSubscriptionCount}`,
           inline: true,
         }
       )
