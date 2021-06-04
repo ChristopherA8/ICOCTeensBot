@@ -35,7 +35,11 @@ module.exports = {
     const embed = new MessageEmbed().setAuthor("Info");
     for (const command of info) {
       let com = command[1];
-      embed.addField(com.name, "test", true);
+      embed.addField(
+        com.name,
+        com.description ? com.description : "No Description",
+        true
+      );
     }
     interaction.reply(embed);
     interaction.fetchReply().then((message) => {
@@ -69,28 +73,44 @@ module.exports = {
             embed.setAuthor("Info");
             for (const command of info) {
               let com = command[1];
-              embed.addField(com.name, "test", true);
+              embed.addField(
+                com.name,
+                com.description ? com.description : "No Description",
+                true
+              );
             }
             break;
           case 2:
             embed.setAuthor("Misc");
             for (const command of misc) {
               let com = command[1];
-              embed.addField(com.name, "test", true);
+              embed.addField(
+                com.name,
+                com.description ? com.description : "No Description",
+                true
+              );
             }
             break;
           case 3:
             embed.setAuthor("XP");
             for (const command of xp) {
               let com = command[1];
-              embed.addField(com.name, "test", true);
+              embed.addField(
+                com.name,
+                com.description ? com.description : "No Description",
+                true
+              );
             }
             break;
           case 4:
             embed.setAuthor("Moderation");
             for (const command of moderation) {
               let com = command[1];
-              embed.addField(com.name, "test", true);
+              embed.addField(
+                com.name,
+                com.description ? com.description : "No Description",
+                true
+              );
             }
             break;
           default:
