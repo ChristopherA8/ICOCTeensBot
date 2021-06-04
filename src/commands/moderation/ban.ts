@@ -1,5 +1,6 @@
 module.exports = {
   name: "ban",
+  category: "moderation",
   permissions: 5,
   execute(msg, args) {
     const { Permissions, MessageEmbed } = require("discord.js");

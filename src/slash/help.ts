@@ -1,6 +1,6 @@
 module.exports = {
   name: "help",
   execute(interaction) {
-    interaction.reply(`This is a very helpful message`);
+    interaction.reply(JSON.stringify(interaction.client.commands, null, 2));
   },
 };

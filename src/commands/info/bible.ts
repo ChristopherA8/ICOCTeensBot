@@ -1,5 +1,6 @@
 module.exports = {
   name: "bible",
+  category: "info",
   permissions: 1,
   execute(msg, args) {
     const axios = require("axios");

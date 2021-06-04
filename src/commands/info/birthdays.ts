@@ -1,5 +1,6 @@
 module.exports = {
   name: "birthdays",
+  category: "info",
   permissions: 1,
   execute(msg) {
     const fs = require("fs");

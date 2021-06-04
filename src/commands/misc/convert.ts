@@ -1,5 +1,6 @@
 module.exports = {
   name: "convert",
+  category: "misc",
   permissions: 1,
   async execute(msg, args) {
     const { cloudConvertToken } = require("../../../config.json");

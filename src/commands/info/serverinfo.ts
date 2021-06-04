@@ -1,5 +1,6 @@
 module.exports = {
   name: "serverinfo",
+  category: "info",
   permissions: 1,
   async execute(msg) {
     const { MessageEmbed } = require("discord.js");

@@ -1,5 +1,6 @@
 module.exports = {
   name: "pfp",
+  category: "info",
   permissions: 1,
   execute(msg) {
     let ping = msg.mentions.members.first();

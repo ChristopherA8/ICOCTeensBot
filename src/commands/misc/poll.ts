@@ -1,5 +1,6 @@
 module.exports = {
   name: "poll",
+  category: "misc",
   permissions: 2,
   execute(msg, args) {
     const pollEmbed = require("discord.js-poll-embed");

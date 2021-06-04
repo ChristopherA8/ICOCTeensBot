@@ -1,5 +1,6 @@
 module.exports = {
   name: "xp",
+  category: "xp",
   permissions: 1,
   execute(msg) {
     const SQLite = require("better-sqlite3");

@@ -1,5 +1,6 @@
 module.exports = {
   name: "uptime",
+  category: "info",
   permissions: 1,
   execute(msg) {
     const {
