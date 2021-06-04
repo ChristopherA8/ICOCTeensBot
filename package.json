@@ -15,6 +15,7 @@
     "cloudconvert": "^2.2.4",
     "discord.js": "github:discordjs/discord.js",
     "discord.js-poll-embed": "^1.0.2",
+    "distube": "^2.8.14",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
