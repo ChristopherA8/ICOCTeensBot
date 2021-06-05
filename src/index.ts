@@ -1,4 +1,4 @@
-const { Client, Intents, Collection } = require("discord.js");
+const { Client, Intents, Collection, MessageEmbed } = require("discord.js");
 const client = new Client({ intents: [Intents.ALL] });
 
 const fs = require("fs");
@@ -22,10 +22,14 @@ client.on(`ready`, () => {
 client.on("guildMemberAdd", (join) => {
   if (join.guild.id !== `698590629344575500`) return;
   const channel = join.guild.channels.cache.get(`698591277205422171`);
-  channel.send(`Welcome ${join} to ICOC Teens!`);
-  join.send(
-    `Welcome ${join} to ICOC Teens!\n\nThanks for checking out the server. To join the server please fill out this form!\n\n<https://docs.google.com/forms/d/e/1FAIpQLSfatFjGGgYmdMjsPFZKM-KX8zEuWvlKi76KX8XNceGTbEiMlw/viewform>\nIf you have any issues/questions filling out the form, feel free to dm a staff member`
-  );
+  channel.send(`Welcome to the ICOC Teens Server`);
+  const welcomeEmbed = new MessageEmbed()
+    .setTitle(`Welcome <@${join.id}>!`)
+    .setDescription(
+      `Thanks for joining the ICOC Teens Server. To gain access to the server please fill out this google form. It helps us keep track of who joins, so we can keep the server a safe place for everyone.\nForm Link: <https://docs.google.com/forms/d/e/1FAIpQLSfatFjGGgYmdMjsPFZKM-KX8zEuWvlKi76KX8XNceGTbEiMlw/viewform>\nIf you have any issue or questions regarding the form, don't hesitate to DM a staff member for assistance.`
+    )
+    .setColor("#47a8e8");
+  join.send(welcomeEmbed);
 });
 
 client.on(`message`, async (msg) => {
