@@ -11,9 +11,9 @@ module.exports = {
     );
 
     const embed = new MessageEmbed()
-      .setTitle("Checklist Command")
+      .setTitle("Announcement")
       .setDescription(
-        "The checklist command is back!\nIt should be a lot better now, try doing `!checklist help` for a list of examples."
+        "The shop is dead until further notice\n||Nobody wanted it, and I no longer want to make it :)||"
       )
       .setColor("#47a8e8");
 
