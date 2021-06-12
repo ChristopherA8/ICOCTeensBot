@@ -11,9 +11,9 @@ module.exports = {
     );
 
     const embed = new MessageEmbed()
-      .setTitle("Announcement")
+      .setTitle("New Commands")
       .setDescription(
-        "The shop is dead until further notice\n||Nobody wanted it, and I no longer want to make it :)||"
+        "Added `!lock` and `!unlock`, just type it in the channel you want to lock and people won't be able to send messages in it anymore. This includes staff without admin ._."
       )
       .setColor("#47a8e8");
 
