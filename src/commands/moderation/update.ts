@@ -11,15 +11,15 @@ module.exports = {
     );
 
     const embed = new MessageEmbed()
-      .setTitle("New Commands")
+      .setTitle("Fixed Bugs")
       .setDescription(
-        "Added `!lock` and `!unlock`, just type it in the channel you want to lock and people won't be able to send messages in it anymore. This includes staff without admin ._."
-      )
-      .setColor("#47a8e8");
-
-    webhookClient.send(" ", {
-      username: "Update",
-      // avatarURL: "https://i.imgur.com/wSTFkRM.png",
+        "Bot will no longer reply to messages in <#770730379077353494> and <#803446581222309888>\nSlash commands are also disabled in these channels and will reply with an error message that only you can see"
+        )
+        .setColor("#47a8e8");
+        //https://chr1s.dev/sharex/files/wgD843s.png
+        webhookClient.send(" ", {
+          username: "Update",
+          // avatarURL: "https://i.imgur.com/wSTFkRM.png",
       embeds: [embed],
     });
   },
