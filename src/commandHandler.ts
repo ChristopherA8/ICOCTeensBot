@@ -14,7 +14,7 @@ module.exports = {
          * 2. ICOC Goat
          * 3. ICOC Champ
          * 4. Partner In Christ
-         * 5. Staff
+         * 5. Staff and emilio
          * 6. Teen Leaders
          * 7. Admin
          * 8. Owner (me and chris)
@@ -58,7 +58,7 @@ module.exports = {
           case 5:
             if (
               msg.member.roles.cache.some(
-                (role) => role.id == `698594429711417415` // Staff
+                (role) => role.id == `698594429711417415` || msg.member.id == '493159317630091285' // Staff and emilio
               )
             ) {
               command.execute(msg, args);
