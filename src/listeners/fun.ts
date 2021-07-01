@@ -1,5 +1,8 @@
 module.exports = {
   listen(msg) {
+    // Ignore threads, especially useful for more serious side topics
+    if (msg.channel.type == 'public_thread' || msg.channel.type == 'private_thread') return;
+
     if (msg.content.toLowerCase() == `f`) {
       msg.react(`🇫`);
     }
