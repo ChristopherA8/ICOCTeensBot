@@ -37,7 +37,8 @@ client.on(`message`, async (msg) => {
   if (msg.channel.type === "dm") return;
 
   // rules channel
-  if (msg.content !== '!rules' && msg.channel.id == '770730379077353494') return msg.delete()
+  if (msg.content !== "!rules" && msg.channel.id == "770730379077353494")
+    return msg.delete();
 
   // Message Listeners
   const files = fs
