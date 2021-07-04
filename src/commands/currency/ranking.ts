@@ -2,7 +2,7 @@ module.exports = {
   name: "ranking",
   permissions: 1,
   category: "currency",
-  description: "Get wealth leaderboard",
+  description: "Wealth ranking",
   async execute(msg) {
     const { MessageEmbed } = require("discord.js");
     const SQLite = require("better-sqlite3");
