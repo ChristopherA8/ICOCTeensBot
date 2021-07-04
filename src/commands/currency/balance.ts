@@ -1,7 +1,9 @@
 module.exports = {
   name: "balance",
   permissions: 1,
-  execute(msg, args) {
+  category: "currency",
+  description: "Show the users balance",
+  execute(msg) {
     const { MessageEmbed } = require("discord.js");
     const SQLite = require("better-sqlite3");
     const sql = new SQLite("./src/databases/currency.sqlite");

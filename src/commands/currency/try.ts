@@ -1,6 +1,8 @@
 module.exports = {
   name: "try",
   permissions: 1,
+  category: "currency",
+  description: "Slot machine game",
   execute(msg, args) {
     const { MessageEmbed } = require("discord.js");
     const SQLite = require("better-sqlite3");
