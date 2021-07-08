@@ -2,7 +2,7 @@ module.exports = {
   async setup(client) {
     const guild = client.guilds.cache.get(`698590629344575500`);
     const channel = guild.channels.cache.get("798032803928342549");
-    const message = await channel.messages.fetch(`832029100746604591`);
+    const message = await channel.messages.fetch(`862750053907038219`);
 
     const animefilter = (reaction, user) =>
       user.id !== `761792910088994816` && reaction.emoji.name == `⛩️`;
@@ -10,6 +10,8 @@ module.exports = {
       user.id !== `761792910088994816` && reaction.emoji.name == `🎨`;
     const athleticsfilter = (reaction, user) =>
       user.id !== `761792910088994816` && reaction.emoji.name == `🏃‍♂️`;
+    const fashionfilter = (reaction, user) =>
+      user.id !== `761792910088994816` && reaction.emoji.name == `👗`;
     const bookfilter = (reaction, user) =>
       user.id !== `761792910088994816` && reaction.emoji.name == `📚`;
     const dndfilter = (reaction, user) =>
@@ -34,6 +36,7 @@ module.exports = {
     const animecollector = message.createReactionCollector(animefilter);
     const artcollector = message.createReactionCollector(artfilter);
     const athleticcollector = message.createReactionCollector(athleticsfilter);
+    const fashioncollector = message.createReactionCollector(fashionfilter);
     const bookcollector = message.createReactionCollector(bookfilter);
     const dndcollector = message.createReactionCollector(dndfilter);
     const foodcollector = message.createReactionCollector(foodfilter);
@@ -95,6 +98,24 @@ module.exports = {
           .catch(console.error);
       } else {
         athleticClub.permissionOverwrites.get(reactionMember.id).delete();
+      }
+    });
+    fashioncollector.on("collect", async (r, user) => {
+      r.users.remove(user.id);
+      var reactionMember = message.guild.members.cache.get(user.id);
+      var fashionClub = guild.channels.cache.get("862748480471302144");
+      if (
+        !fashionClub.permissionOverwrites.find(
+          (mem) => mem.id == reactionMember.id
+        )
+      ) {
+        fashionClub
+          .updateOverwrite(reactionMember, {
+            VIEW_CHANNEL: true,
+          })
+          .catch(console.error);
+      } else {
+        fashionClub.permissionOverwrites.get(reactionMember.id).delete();
       }
     });
     bookcollector.on("collect", async (r, user) => {
