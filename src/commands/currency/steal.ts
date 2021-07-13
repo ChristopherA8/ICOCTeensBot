@@ -1,6 +1,8 @@
 module.exports = {
   name: "steal",
   permissions: 1,
+  category: "currency",
+  description: "Steal from the poor to give to the poor",
   execute(msg) {
     const { MessageEmbed } = require("discord.js");
     const SQLite = require("better-sqlite3");
