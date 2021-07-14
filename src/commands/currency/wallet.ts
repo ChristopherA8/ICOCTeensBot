@@ -21,7 +21,7 @@ module.exports = {
       const embed = new MessageEmbed()
         .setTitle(`${ping.user.username}'s Wallet`)
         .addFields({ name: "Balance", value: `$${wallet.money}`, inline: true })
-        .setColor(msg.author.displayColor);
+        .setColor(ping.displayColor);
 
       return msg.reply(embed);
     }
@@ -33,7 +33,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setTitle(`${msg.author.username}'s Wallet`)
       .addFields({ name: "Balance", value: `$${wallet.money}`, inline: true })
-      .setColor(msg.author.displayColor);
+      .setColor(msg.member.displayColor);
 
     msg.reply(embed);
   },

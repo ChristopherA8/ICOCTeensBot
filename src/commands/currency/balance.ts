@@ -21,7 +21,7 @@ module.exports = {
         .get(ping.id);
 
       const embed = new MessageEmbed()
-        .setTitle(`${msg.author.username}'s Balance`)
+        .setTitle(`${ping.user.username}'s Balance`)
         .addFields(
           { name: "Wallet", value: `$${wallet.money}`, inline: true },
           { name: "Bank", value: `$${bank.money}`, inline: true }
@@ -44,7 +44,7 @@ module.exports = {
         { name: "Wallet", value: `$${wallet.money}`, inline: true },
         { name: "Bank", value: `$${bank.money}`, inline: true }
       )
-      .setColor(msg.author.displayColor);
+      .setColor(msg.member.displayColor);
 
     msg.reply(embed);
   },

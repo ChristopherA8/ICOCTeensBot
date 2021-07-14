@@ -46,7 +46,7 @@ module.exports = {
         { name: "Wallet", value: `$${wallet.money}`, inline: true },
         { name: "Bank", value: `$${bank.money}`, inline: true }
       )
-      .setColor(msg.author.displayColor);
+      .setColor(msg.member.displayColor);
 
     msg.reply(embed);
   },
