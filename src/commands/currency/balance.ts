@@ -2,54 +2,49 @@ module.exports = {
   name: "balance",
   permissions: 1,
   category: "currency",
-  description: "Show the users balance",
-  execute(msg) {
+  description: "Show the users bank and wallet balance",
+  async execute(msg) {
     const { MessageEmbed } = require("discord.js");
     const SQLite = require("better-sqlite3");
-    const sql = new SQLite("./src/databases/currency.sqlite");
+    const { doIExist } = require("./doIExist.ts");
+    const bankDB = new SQLite("./src/databases/bank.sqlite");
+    const walletDB = new SQLite("./src/databases/currency.sqlite");
 
-    let ping = msg.mentions.members.first();
+    const ping = msg.mentions.members.first();
+
+    await doIExist(msg.author.id, ping);
 
     if (ping) {
-      let them = sql
+      let bank = bankDB.prepare("SELECT * FROM bank WHERE id = ?").get(ping.id);
+      let wallet = walletDB
         .prepare("SELECT * FROM currency WHERE id = ?")
         .get(ping.id);
 
-      if (!them) {
-        sql
-          .prepare("INSERT OR REPLACE INTO currency (id, money) VALUES (?, ?);")
-          .run(ping.id, 10);
-
-        them = sql.prepare("SELECT * FROM currency WHERE id = ?").get(ping.id);
-      }
-
       const embed = new MessageEmbed()
-        .setTitle(`${ping.user.username}'s Wallet`)
-        .addField("Balance", `$${them.money}`)
-        .setColor(msg.member.displayColor);
+        .setTitle(`${msg.author.username}'s Balance`)
+        .addFields(
+          { name: "Wallet", value: `$${wallet.money}`, inline: true },
+          { name: "Bank", value: `$${bank.money}`, inline: true }
+        )
+        .setColor(ping.displayColor);
 
-      msg.reply(embed);
-      return;
+      return msg.reply(embed);
     }
 
-    let person = sql
+    let bank = bankDB
+      .prepare("SELECT * FROM bank WHERE id = ?")
+      .get(msg.author.id);
+    let wallet = walletDB
       .prepare("SELECT * FROM currency WHERE id = ?")
       .get(msg.author.id);
 
-    if (!person) {
-      sql
-        .prepare("INSERT OR REPLACE INTO currency (id, money) VALUES (?, ?);")
-        .run(msg.author.id, 10);
-
-      person = sql
-        .prepare("SELECT * FROM currency WHERE id = ?")
-        .get(msg.author.id);
-    }
-
     const embed = new MessageEmbed()
-      .setTitle(`${msg.author.username}'s Wallet`)
-      .addField("Balance", `$${person.money}`)
-      .setColor(msg.member.displayColor);
+      .setTitle(`${msg.author.username}'s Balance`)
+      .addFields(
+        { name: "Wallet", value: `$${wallet.money}`, inline: true },
+        { name: "Bank", value: `$${bank.money}`, inline: true }
+      )
+      .setColor(msg.author.displayColor);
 
     msg.reply(embed);
   },
