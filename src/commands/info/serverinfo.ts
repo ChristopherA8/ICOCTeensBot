@@ -5,16 +5,17 @@ module.exports = {
   permissions: 1,
   async execute(msg) {
     const { MessageEmbed } = require("discord.js");
-    let members = msg.guild.members.cache.filter(
-      (member) => member.bot !== true
-    );
 
     let created = msg.guild.createdAt.toString().replace(/\([^)]*\)/g, "");
 
     const embed = new MessageEmbed()
       .setAuthor(`${msg.guild.name}`)
       .addFields(
-        { name: "Member Count", value: `${members.size}`, inline: true },
+        {
+          name: "Member Count",
+          value: `${msg.guild.memberCount}`,
+          inline: true,
+        },
         { name: "Created At", value: `${created}`, inline: true },
         {
           name: "Owner",
