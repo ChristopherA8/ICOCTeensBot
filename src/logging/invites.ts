@@ -17,12 +17,12 @@ module.exports = {
           null,
           null,
           [
-            { name: "URL", value: invite.url, inline: false },
-            { name: "Creator", value: invite.inviter, inline: false },
-            { name: "Max Uses", value: maxUses, inline: true },
+            { name: "URL", value: `${invite.url}`, inline: false },
+            { name: "Creator", value: `${invite.inviter}`, inline: false },
+            { name: "Max Uses", value: `${maxUses}`, inline: true },
             {
               name: "Duration",
-              value: secondsToHms(invite.maxAge),
+              value: `${secondsToHms(invite.maxAge)}`,
               inline: true,
             },
           ],
