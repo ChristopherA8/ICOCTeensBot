@@ -58,7 +58,9 @@ module.exports = {
           case 5:
             if (
               msg.member.roles.cache.some(
-                (role) => role.id == `698594429711417415` || msg.member.id == '493159317630091285' // Staff and emilio
+                (role) =>
+                  role.id == `698594429711417415` ||
+                  msg.member.id == "493159317630091285" // Staff and emilio
               )
             ) {
               command.execute(msg, args);
@@ -83,11 +85,8 @@ module.exports = {
             return;
           case 8:
             if (
-              msg.member.roles.cache.some(
-                (role) =>
-                  role.id == `279032930926592000` ||
-                  role.id == `620438897217896459` // Owners
-              )
+              msg.member.id == `279032930926592000` ||
+              msg.member.id == `620438897217896459` // Owners
             ) {
               command.execute(msg, args);
               break;
