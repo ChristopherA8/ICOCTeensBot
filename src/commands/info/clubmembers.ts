@@ -7,13 +7,9 @@ module.exports = {
       (club) => club.id !== `798032803928342549`
     ); // Club channels minus #club-list
     const { MessageEmbed } = require("discord.js");
-    const embed = new MessageEmbed().setAuthor("Club Members");
+    const embed = new MessageEmbed().setTitle("Club Members");
     clubs.forEach((club) => {
-      embed.addField(
-        club.name,
-        `\`Members: ${club.permissionOverwrites.size}\``,
-        true
-      );
+      embed.addField(club.name, `${club.permissionOverwrites.size}`, true);
     });
     msg.channel.send(embed);
   },
