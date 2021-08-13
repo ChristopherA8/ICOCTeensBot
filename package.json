@@ -2,9 +2,9 @@
   "name": "icocteensbot",
   "version": "1.0.0",
   "description": "All-purpose discord bot for the ICOC Teens discord server",
-  "main": "src/index.ts",
+  "main": "src/index.js",
   "scripts": {
-    "test": "tsc src/index.ts && node src/index.js"
+    "test": "node src/index.js"
   },
   "keywords": [
     "discord",
