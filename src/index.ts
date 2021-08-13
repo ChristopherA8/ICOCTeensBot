@@ -1,5 +1,19 @@
-const { Client, Intents, Collection, MessageEmbed } = require("discord.js");
-const client = new Client({ intents: [Intents.ALL] });
+const { Client, Intents } = require("discord.js");
+const client = new Client({
+  intents: [
+    Intents.FLAGS.DIRECT_MESSAGES,
+    Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+    Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_BANS,
+    Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
+    Intents.FLAGS.GUILD_INTEGRATIONS,
+    Intents.FLAGS.GUILD_INVITES,
+    Intents.FLAGS.GUILD_MEMBERS,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+  ],
+});
 
 const fs = require("fs");
 
@@ -7,7 +21,7 @@ const { token, prefix } = require("../config.json");
 
 client.on(`ready`, () => {
   console.log(`Logged in as ${client.user.tag}`);
-  client.user.setActivity(`/help`, { type: "LISTENING" });
+  client.user.setActivity(`/help`, { type: "WATCHING" });
 
   // Run setup
   const files = fs
