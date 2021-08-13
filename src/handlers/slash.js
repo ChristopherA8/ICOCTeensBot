@@ -1,10 +1,13 @@
 module.exports = {
   slashHandler(interaction, client) {
+    if (!interaction.isCommand()) return;
+
     if (
       interaction.channel.id == "803446581222309888" ||
       interaction.channel.id == "770730379077353494"
     )
-      return interaction.reply("Commands not allowed here!", {
+      return interaction.reply({
+        content: "Commands not allowed here!",
         ephemeral: true,
       });
 
