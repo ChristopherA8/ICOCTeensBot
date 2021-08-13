@@ -12,7 +12,7 @@
     "icoc",
     "teens"
   ],
-  "author": "",
+  "author": "Chr1s",
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.5.0",
