@@ -14,19 +14,21 @@ module.exports = {
           !after.roles.cache.find((afterRole) => afterRole.id === beforeRole.id)
         ) {
           // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
-          channel.send(
-            embed(
-              "Role Removed",
-              null,
-              null,
-              `${beforeRole} from ${before.user.tag}`,
-              null,
-              null,
-              null,
-              "#47a8e8",
-              before.user.displayAvatarURL({ dynamic: true, size: 64 })
-            )
-          );
+          channel.send({
+            embeds: [
+              embed(
+                "Role Removed",
+                null,
+                null,
+                `${beforeRole} from ${before.user.tag}`,
+                null,
+                null,
+                null,
+                "#47a8e8",
+                before.user.displayAvatarURL({ dynamic: true, size: 64 })
+              ),
+            ],
+          });
         }
       });
 
@@ -38,37 +40,41 @@ module.exports = {
           )
         ) {
           // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
-          channel.send(
-            embed(
-              "Role Added",
-              null,
-              null,
-              `${beforeRole} to ${before.user.tag}`,
-              null,
-              null,
-              null,
-              "#47a8e8",
-              before.user.displayAvatarURL({ dynamic: true, size: 64 })
-            )
-          );
+          channel.send({
+            embeds: [
+              embed(
+                "Role Added",
+                null,
+                null,
+                `${beforeRole} to ${before.user.tag}`,
+                null,
+                null,
+                null,
+                "#47a8e8",
+                before.user.displayAvatarURL({ dynamic: true, size: 64 })
+              ),
+            ],
+          });
         }
       });
 
       if (before.nickname !== after.nickname) {
         // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
-        channel.send(
-          embed(
-            "Nickname Changed",
-            null,
-            null,
-            `\`${before.nickname}\` to \`${after.nickname}\`\n\nfor ${before.user.tag}`,
-            null,
-            null,
-            null,
-            "#47a8e8",
-            before.user.displayAvatarURL({ dynamic: true, size: 64 })
-          )
-        );
+        channel.send({
+          embeds: [
+            embed(
+              "Nickname Changed",
+              null,
+              null,
+              `\`${before.nickname}\` to \`${after.nickname}\`\n\nfor ${before.user.tag}`,
+              null,
+              null,
+              null,
+              "#47a8e8",
+              before.user.displayAvatarURL({ dynamic: true, size: 64 })
+            ),
+          ],
+        });
       }
     });
 
@@ -79,19 +85,21 @@ module.exports = {
 
       if (before.username !== after.username) {
         // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
-        channel.send(
-          embed(
-            "Username Changed",
-            null,
-            null,
-            `\`${before.username}\` to \`${after.username}\``,
-            null,
-            null,
-            null,
-            "#47a8e8",
-            before.displayAvatarURL({ dynamic: true, size: 64 })
-          )
-        );
+        channel.send({
+          embeds: [
+            embed(
+              "Username Changed",
+              null,
+              null,
+              `\`${before.username}\` to \`${after.username}\``,
+              null,
+              null,
+              null,
+              "#47a8e8",
+              before.displayAvatarURL({ dynamic: true, size: 64 })
+            ),
+          ],
+        });
       }
     });
   },

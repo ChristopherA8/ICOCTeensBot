@@ -12,28 +12,30 @@ module.exports = {
       // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
       let maxUses = invite.maxUses;
       if (invite.maxUses == "0") maxUses = "no limit";
-      channel.send(
-        embed(
-          "Invite Created",
-          null,
-          null,
-          null,
-          [
-            { name: "URL", value: `${invite.url}`, inline: false },
-            { name: "Creator", value: `${invite.inviter}`, inline: false },
-            { name: "Max Uses", value: `${maxUses}`, inline: true },
-            {
-              name: "Duration",
-              value: `${secondsToHms(invite.maxAge)}`,
-              inline: true,
-            },
-          ],
-          null,
-          null,
-          "#47a8e8",
-          null
-        )
-      );
+      channel.send({
+        embeds: [
+          embed(
+            "Invite Created",
+            null,
+            null,
+            null,
+            [
+              { name: "URL", value: `${invite.url}`, inline: false },
+              { name: "Creator", value: `${invite.inviter}`, inline: false },
+              { name: "Max Uses", value: `${maxUses}`, inline: true },
+              {
+                name: "Duration",
+                value: `${secondsToHms(invite.maxAge)}`,
+                inline: true,
+              },
+            ],
+            null,
+            null,
+            "#47a8e8",
+            null
+          ),
+        ],
+      });
     });
   },
 };

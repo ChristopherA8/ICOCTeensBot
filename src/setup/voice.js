@@ -35,7 +35,7 @@ module.exports = {
           .setFooter(`${status(message.client.distube.getQueue(message))}`)
           .setColor("#47a8e8");
 
-        message.channel.send(embed);
+        message.channel.send({ embeds: [embed] });
       })
       .on("addSong", (message, queue, song) => {
         message.reply(

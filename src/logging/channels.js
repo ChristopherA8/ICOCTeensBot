@@ -10,19 +10,21 @@ module.exports = {
 
       const channel = newChannel.guild.channels.cache.get(AUDIT_LOG_ID);
       // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
-      channel.send(
-        embed(
-          "Channel Created",
-          null,
-          null,
-          `#${newChannel.name}`,
-          null,
-          null,
-          null,
-          "#47a8e8",
-          null
-        )
-      );
+      channel.send({
+        embeds: [
+          embed(
+            "Channel Created",
+            null,
+            null,
+            `#${newChannel.name}`,
+            null,
+            null,
+            null,
+            "#47a8e8",
+            null
+          ),
+        ],
+      });
     });
 
     client.on("channelDelete", (oldChannel) => {
@@ -31,19 +33,21 @@ module.exports = {
 
       const channel = oldChannel.guild.channels.cache.get(AUDIT_LOG_ID);
       // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
-      channel.send(
-        embed(
-          "Channel Deleted",
-          null,
-          null,
-          `#${oldChannel.name}`,
-          null,
-          null,
-          null,
-          "#47a8e8",
-          null
-        )
-      );
+      channel.send({
+        embeds: [
+          embed(
+            "Channel Deleted",
+            null,
+            null,
+            `#${oldChannel.name}`,
+            null,
+            null,
+            null,
+            "#47a8e8",
+            null
+          ),
+        ],
+      });
     });
 
     client.on(`channelUpdate`, (before, after) => {
@@ -52,38 +56,42 @@ module.exports = {
 
       if (after.name !== before.name) {
         // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
-        channel.send(
-          embed(
-            "Channel Name Changed",
-            null,
-            null,
-            `\`${before.name}\` to \`${after.name}\``,
-            null,
-            null,
-            null,
-            "#47a8e8",
-            null
-          )
-        );
+        channel.send({
+          embeds: [
+            embed(
+              "Channel Name Changed",
+              null,
+              null,
+              `\`${before.name}\` to \`${after.name}\``,
+              null,
+              null,
+              null,
+              "#47a8e8",
+              null
+            ),
+          ],
+        });
       }
 
       if (after.topic !== before.topic) {
         // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
-        channel.send(
-          embed(
-            "Channel Description Changed",
-            null,
-            null,
-            `\`${before.topic ? before.topic : "  "}\` to \`${
-              after.topic ? after.topic : "  "
-            }\`\n\nfor ${before}`,
-            null,
-            null,
-            null,
-            "#47a8e8",
-            null
-          )
-        );
+        channel.send({
+          embeds: [
+            embed(
+              "Channel Description Changed",
+              null,
+              null,
+              `\`${before.topic ? before.topic : "  "}\` to \`${
+                after.topic ? after.topic : "  "
+              }\`\n\nfor ${before}`,
+              null,
+              null,
+              null,
+              "#47a8e8",
+              null
+            ),
+          ],
+        });
       }
     });
   },
