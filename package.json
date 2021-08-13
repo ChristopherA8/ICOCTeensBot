@@ -1,12 +1,17 @@
 {
   "name": "icocteensbot",
   "version": "1.0.0",
-  "description": "",
+  "description": "All-purpose discord bot for the ICOC Teens discord server",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc src/index.ts && node src/index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "discord",
+    "bot",
+    "icoc",
+    "teens"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
