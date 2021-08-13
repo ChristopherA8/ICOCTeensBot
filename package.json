@@ -14,7 +14,7 @@
     "axios": "^0.21.1",
     "better-sqlite3": "^7.4.0",
     "cloudconvert": "^2.2.4",
-    "discord.js": "github:discordjs/discord.js#ae78a336e1d0d190ec9f525449332dc781e0b3bf",
+    "discord.js": "github:discordjs/discord.js",
     "discord.js-poll-embed": "^1.0.2",
     "distube": "^2.8.14",
     "ffmpeg-static": "^4.3.0",
