@@ -1,6 +1,8 @@
 module.exports = {
   log(client) {
-    const AUDIT_LOG_ID = "759967435309842494";
+    const { channels } = require("../../config.json");
+    const AUDIT_LOG_ID = channels["AUDIT_LOG_ID"];
+
     const { embed } = require("../helpers/embed.ts");
     client.on("guildMemberUpdate", async (before, after) => {
       if (after.guild.id !== `698590629344575500`) return;
