@@ -112,6 +112,6 @@ module.exports = {
       )
       .setColor(msg.member.displayColor);
 
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

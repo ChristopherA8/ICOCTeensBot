@@ -24,7 +24,7 @@ module.exports = {
         .addField("Balance", `$${them.money}`)
         .setColor(msg.member.displayColor);
 
-      msg.reply(embed);
+      msg.reply({ embeds: [embed] });
       return;
     }
 
@@ -37,6 +37,6 @@ module.exports = {
       .addField("Balance", `$${person.money}`)
       .setColor(msg.member.displayColor);
 
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

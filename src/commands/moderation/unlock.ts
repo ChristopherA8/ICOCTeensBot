@@ -4,7 +4,7 @@ module.exports = {
   category: "moderation",
   description: "Unlock a channel",
   execute(msg) {
-    msg.channel.updateOverwrite(msg.guild.roles.everyone, {
+    msg.channel.permissionOverwrites.edit(msg.guild.roles.everyone, {
       SEND_MESSAGES: null,
     });
     msg.reply("Channel unlocked");

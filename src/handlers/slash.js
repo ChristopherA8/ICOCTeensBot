@@ -1,5 +1,5 @@
 module.exports = {
-  slashHandler(interaction, client) {
+  async slashHandler(interaction, client) {
     const { Permissions } = require("discord.js");
 
     if (!client.slash.has(interaction.commandName)) return;

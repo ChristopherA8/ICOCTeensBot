@@ -15,14 +15,16 @@
   "author": "Chr1s",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.5.0",
+    "@discordjs/opus": "^0.5.3",
+    "@discordjs/voice": "^0.6.0",
     "axios": "^0.21.1",
     "better-sqlite3": "^7.4.0",
     "cloudconvert": "^2.2.4",
     "discord.js": "github:discordjs/discord.js",
     "discord.js-poll-embed": "^1.0.2",
-    "distube": "^2.8.14",
+    "distube": "^3.0.0-beta.36",
     "ffmpeg-static": "^4.3.0",
+    "libsodium-wrappers": "^0.7.9",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {

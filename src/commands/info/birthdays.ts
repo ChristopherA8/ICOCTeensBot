@@ -19,6 +19,6 @@ module.exports = {
       let member = getMember(person.id);
       embed.addField(member.user.tag, person.date);
     }
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

@@ -27,6 +27,6 @@ module.exports = {
         { name: "Level", value: `${score.level}`, inline: true }
       )
       .setColor("#47a8e8");
-    interaction.reply(embed);
+    interaction.reply({ embeds: [embed] });
   },
 };

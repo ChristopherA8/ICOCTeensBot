@@ -23,7 +23,7 @@ module.exports = {
         .addFields({ name: "Balance", value: `$${wallet.money}`, inline: true })
         .setColor(ping.displayColor);
 
-      return msg.reply(embed);
+      return msg.reply({ embeds: [embed] });
     }
 
     let wallet = walletDB
@@ -35,6 +35,6 @@ module.exports = {
       .addFields({ name: "Balance", value: `$${wallet.money}`, inline: true })
       .setColor(msg.member.displayColor);
 
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

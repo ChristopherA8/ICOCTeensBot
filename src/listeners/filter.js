@@ -1,8 +1,8 @@
 module.exports = {
   listen(msg) {
-    if (msg.channel.id == `770730379077353494`) return;
+    if (msg.channel.id == "770730379077353494") return;
     const { MessageEmbed } = require("discord.js");
-    const { words } = require(`../../wordFilter.json`);
+    const { words } = require("../../wordFilter.json");
     const channel = msg.client.channels.cache.get("768882922379280464");
     const args = msg.content.split(/ +/);
 
@@ -13,7 +13,7 @@ module.exports = {
             .setAuthor("Word Filtered")
             .setDescription(msg.content)
             .setColor("#FF0000");
-          channel.send(embed);
+          channel.send({ embeds: [embed] });
           msg.delete();
         }
       }

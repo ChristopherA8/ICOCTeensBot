@@ -8,7 +8,7 @@ module.exports = {
       .setDescription(
         "> ⛩️ - Anime Club\n> \n> 🎨 - Art Club\n> \n> 🏃‍♂️ - Athletics Club\n> \n> 👗 - Fashion Club\n> \n> 📚 - Book Club\n> \n> 🎲 - D&D Club\n> \n> 🍜 - Food Club\n> \n> 🎮 - Gaming Club\n> \n> 📺 - Movie/TV Club\n> \n> 🎼 - Music Club\n> \n> 🐈 - Pet Club\n> \n> 🔨 - STEM Club\n> \n> 🧳 - Travel Club\n> \n> 🌳 - Nature Club\n\n**React again to leave a club**"
       );
-    msg.channel.send(embed).then((msg) => {
+    msg.channel.send({ embeds: [embed] }).then((msg) => {
       msg.react("⛩️");
       msg.react("🎨");
       msg.react("🏃‍♂️");

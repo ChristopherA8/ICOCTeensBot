@@ -28,7 +28,7 @@ module.exports = {
           { name: "Reason", value: reason }
         );
       // ban gif https://tenor.com/view/anime-mad-ban-punch-gif-17117340
-      msg.reply(banEmbed);
+      msg.reply({ embeds: [banEmbed] });
     } else {
       person.ban();
       msg.reply(`Banned <@${person.id}>`);

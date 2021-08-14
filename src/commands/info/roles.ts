@@ -12,6 +12,6 @@ module.exports = {
     const embed = new MessageEmbed()
       .setAuthor(`All Roles`)
       .setDescription(roles ? roles : "No Roles");
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

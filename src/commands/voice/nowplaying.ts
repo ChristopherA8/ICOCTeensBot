@@ -34,6 +34,6 @@ module.exports = {
       .setFooter(`${status(msg.client.distube.getQueue(msg))}`)
       .setColor("#47a8e8");
 
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

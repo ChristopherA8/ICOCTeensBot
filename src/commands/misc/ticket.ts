@@ -17,7 +17,7 @@ module.exports = {
       .setDescription(ticket.substr(0, 1900))
       .setFooter(`From ${msg.author.tag}`)
       .setColor("#47a8e8");
-    channel.send(embed);
+    channel.send({ embeds: [embed] });
 
     await msg.reply("Message Sent 📪");
     msg.delete();

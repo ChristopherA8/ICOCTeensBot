@@ -1,37 +1,38 @@
 module.exports = {
-  async setup(client) {
-    const guild = client.guilds.cache.get(`698590629344575500`);
+  setup(client) {},
+  async setupNo(client) {
+    const guild = client.guilds.cache.get("698590629344575500");
     const channel = guild.channels.cache.get("798032803928342549");
-    const message = await channel.messages.fetch(`862750053907038219`);
+    const message = await channel.messages.fetch("862750053907038219");
 
     const animefilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `⛩️`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "⛩️";
     const artfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `🎨`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "🎨";
     const athleticsfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `🏃‍♂️`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "🏃‍♂️";
     const fashionfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `👗`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "👗";
     const bookfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `📚`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "📚";
     const dndfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `🎲`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "🎲";
     const foodfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `🍜`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "🍜";
     const gamingfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `🎮`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "🎮";
     const tvfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `📺`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "📺";
     const musicfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `🎼`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "🎼";
     const petfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `🐈`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "🐈";
     const stemfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `🔨`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "🔨";
     const travelfilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `🧳`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "🧳";
     const natureFilter = (reaction, user) =>
-      user.id !== `761792910088994816` && reaction.emoji.name == `🌳`;
+      user.id !== "761792910088994816" && reaction.emoji.name == "🌳";
 
     const animecollector = message.createReactionCollector(animefilter);
     const artcollector = message.createReactionCollector(artfilter);
@@ -48,8 +49,11 @@ module.exports = {
     const travelcollector = message.createReactionCollector(travelfilter);
     const naturecollector = message.createReactionCollector(natureFilter);
 
+    // const removeReactionsCollector = message.createReactionCollector((reaction, filter) => user.id !== "761792910088994816");
+
     animecollector.on("collect", async (r, user) => {
       r.users.remove(user.id);
+      console.log("hi");
       var reactionMember = message.guild.members.cache.get(user.id);
       var animeClub = guild.channels.cache.get("762728186714128474");
       if (
@@ -67,7 +71,7 @@ module.exports = {
       }
     });
     artcollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var artClub = guild.channels.cache.get("768879621927600189");
       if (
@@ -85,7 +89,7 @@ module.exports = {
       }
     });
     athleticcollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var athleticClub = guild.channels.cache.get("798057555459964938");
       if (
@@ -103,7 +107,7 @@ module.exports = {
       }
     });
     fashioncollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var fashionClub = guild.channels.cache.get("862748480471302144");
       if (
@@ -121,7 +125,7 @@ module.exports = {
       }
     });
     bookcollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var bookClub = guild.channels.cache.get("771017826559066132");
       if (
@@ -139,7 +143,7 @@ module.exports = {
       }
     });
     dndcollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var dndClub = guild.channels.cache.get("785613556724531201");
       if (
@@ -157,7 +161,7 @@ module.exports = {
       }
     });
     foodcollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var foodClub = guild.channels.cache.get("798057687249321994");
       if (
@@ -175,7 +179,7 @@ module.exports = {
       }
     });
     gamingcollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var gamingClub = guild.channels.cache.get("768634091507286046");
       if (
@@ -193,7 +197,7 @@ module.exports = {
       }
     });
     tvcollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var tvClub = guild.channels.cache.get("780279298509504552");
       if (
@@ -211,7 +215,7 @@ module.exports = {
       }
     });
     musiccollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var musicClub = guild.channels.cache.get("768939597568147496");
       if (
@@ -229,7 +233,7 @@ module.exports = {
       }
     });
     petcollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var stemClub = guild.channels.cache.get("818309635232235521");
       if (
@@ -247,7 +251,7 @@ module.exports = {
       }
     });
     stemcollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var stemClub = guild.channels.cache.get("776921664948273192");
       if (
@@ -265,7 +269,7 @@ module.exports = {
       }
     });
     travelcollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var stemClub = guild.channels.cache.get("799714906353303662");
       if (
@@ -283,7 +287,7 @@ module.exports = {
       }
     });
     naturecollector.on("collect", async (r, user) => {
-      r.users.remove(user.id);
+      // r.users.remove(user.id);
       var reactionMember = message.guild.members.cache.get(user.id);
       var natureClub = guild.channels.cache.get("831227653159387248");
       if (

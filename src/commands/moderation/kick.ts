@@ -20,14 +20,14 @@ module.exports = {
     } else if (person.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
       msg.reply(`Don't kick an admin`);
     } else if (reason) {
-      person.kick({ reason: reason });
+      person.kick(reason);
       const kickEmbed = new MessageEmbed()
         .setTitle("Kicked")
         .addFields(
           { name: "User", value: `<@${person.id}>` },
           { name: "Reason", value: reason }
         );
-      msg.reply(kickEmbed).then((message) => {
+      msg.reply({ embeds: [kickEmbed] }).then((message) => {
         setTimeout(() => {
           message.delete();
         }, 8000);

@@ -19,6 +19,6 @@ module.exports = {
         "https://cdn.discordapp.com/avatars/279032930926592000/a_73ce23911547d6638df3f7f70c791c0f.gif"
       )
       .setColor(`#47a8e8`);
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

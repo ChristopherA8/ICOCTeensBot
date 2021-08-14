@@ -1,5 +1,6 @@
 module.exports = {
   async listen(msg) {
+    /*
     const SQLite = require("better-sqlite3");
 
     // Create SQLite database
@@ -24,6 +25,6 @@ module.exports = {
         .forEach((member) => {
           member.roles.remove(`808429363392806952`);
         });
-    }
+    }*/
   },
 };
