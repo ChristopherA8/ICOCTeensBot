@@ -22,7 +22,7 @@ module.exports = {
         false
       );
     }
-    interaction.reply(embed);
+    interaction.reply({ embeds: [embed] });
     interaction.fetchReply().then((message) => {
       message.react("◀");
       message.react("▶");
@@ -58,7 +58,7 @@ module.exports = {
               false
             );
           }
-          message.edit(embed);
+          message.edit({ embeds: [embed] });
         }
         if (reaction.emoji.name === "▶" && end < 50) {
           start += 5;
@@ -71,7 +71,7 @@ module.exports = {
               false
             );
           }
-          message.edit(embed);
+          message.edit({ embeds: [embed] });
         }
       });
     });

@@ -56,7 +56,7 @@ module.exports = {
         true
       );
     }
-    interaction.reply(embed);
+    interaction.reply({ embeds: [embed] });
     interaction.fetchReply().then((message) => {
       message.react("◀");
       message.react("▶");
@@ -177,7 +177,7 @@ module.exports = {
           default:
             break;
         }
-        message.edit(embed);
+        message.edit({ embeds: [embed] });
       });
     });
   },

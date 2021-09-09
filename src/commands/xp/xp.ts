@@ -33,7 +33,7 @@ module.exports = {
           { name: "Level", value: `${score.level}`, inline: true }
         )
         .setColor("#47a8e8");
-      msg.reply(embed);
+      msg.reply({ embeds: [embed] });
     } else {
       let score = sql
         .prepare("SELECT * FROM scores WHERE user = ? AND guild = ?")
@@ -49,7 +49,7 @@ module.exports = {
           { name: "Level", value: `${score.level}`, inline: true }
         )
         .setColor("#47a8e8");
-      msg.reply(embed);
+      msg.reply({ embeds: [embed] });
     }
   },
 };

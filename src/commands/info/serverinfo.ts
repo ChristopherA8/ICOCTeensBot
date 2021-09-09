@@ -31,6 +31,6 @@ module.exports = {
       )
       .setThumbnail(msg.guild.iconURL({ dynamic: true, size: 128 }))
       .setColor(`#47a8e8`);
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

@@ -59,7 +59,7 @@ module.exports = {
       )
       .setColor(msg.member.displayColor);
 
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
 
     sql
       .prepare("INSERT OR REPLACE INTO currency (id, money) VALUES (?, ?)")

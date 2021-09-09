@@ -90,7 +90,7 @@ module.exports = {
             }
           )
           .setFooter(`Creator: ${item3.creator}`);
-        msg.reply(listEmbed2);
+        msg.reply({ embeds: [listEmbed2] });
         break;
       case "addnote":
         var input = args;
@@ -130,7 +130,7 @@ module.exports = {
               value: "!checklist edit 1 This replaces the old note",
             }
           );
-        msg.reply(helpEmbed);
+        msg.reply({ embeds: [helpEmbed] });
         break;
       default:
         let items = sql.prepare("SELECT * FROM checklist ORDER BY id").all();
@@ -150,7 +150,7 @@ module.exports = {
             `\`\`\`${things.id}: ${things.item} | ${status}\`\`\``
           );
         }
-        msg.reply(listEmbed);
+        msg.reply({ embeds: [listEmbed] });
 
         break;
     }

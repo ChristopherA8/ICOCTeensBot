@@ -11,6 +11,6 @@ module.exports = {
     clubs.forEach((club) => {
       embed.addField(club.name, `${club.permissionOverwrites.size}`, true);
     });
-    msg.channel.send(embed);
+    msg.channel.send({ embeds: [embed] });
   },
 };

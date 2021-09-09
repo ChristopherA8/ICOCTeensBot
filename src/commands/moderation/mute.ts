@@ -29,7 +29,7 @@ module.exports = {
           { name: "User", value: `<@${person.id}>` },
           { name: "Reason", value: reason }
         );
-      msg.reply(muteEmbed).then((message) => {
+      msg.reply({ embeds: [muteEmbed] }).then((message) => {
         setTimeout(() => {
           message.delete();
         }, 8000);

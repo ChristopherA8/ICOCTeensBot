@@ -1,7 +1,7 @@
 module.exports = {
   listen(msg) {
     if (msg.author.bot) return;
-    if (msg.channel.id == `770730379077353494`) return;
+    if (msg.channel.id == "770730379077353494") return;
 
     let score = msg.client.getScore.get(msg.author.id, "698590629344575500");
     if (!score) {
@@ -31,7 +31,7 @@ module.exports = {
     const curLevel = Math.floor(0.3 * Math.sqrt(score.points));
     if (
       score.level < curLevel &&
-      msg.channel.id !== `698594785803501629` && // staff chat
+      msg.channel.id !== "698594785803501629" && // staff chat
       msg.channel.id !== "818309077431746592" && // comm announcements
       msg.channel.id !== "698590945993555998" && // announcements
       msg.channel.id !== "769966706667290634" // events

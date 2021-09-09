@@ -28,7 +28,7 @@ module.exports = {
         )
         .setColor(ping.displayColor);
 
-      return msg.reply(embed);
+      return msg.reply({ embeds: [embed] });
     }
 
     let bank = bankDB
@@ -46,6 +46,6 @@ module.exports = {
       )
       .setColor(msg.member.displayColor);
 
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

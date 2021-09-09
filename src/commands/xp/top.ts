@@ -25,9 +25,9 @@ module.exports = {
         false
       );
     }
-    msg.reply(embed).then((message) => {
-      message.react("◀");
-      message.react("▶");
+    msg.reply({ embeds: [embed] }).then(async (message) => {
+      await message.react("◀");
+      await message.react("▶");
       const filter = (reaction, user) => {
         return (
           (reaction.emoji.name === "◀" || reaction.emoji.name === "▶") &&
@@ -60,7 +60,7 @@ module.exports = {
               false
             );
           }
-          message.edit(embed);
+          message.edit({ embeds: [embed] });
         }
         if (reaction.emoji.name === "▶" && end < 50) {
           start += 5;
@@ -73,7 +73,7 @@ module.exports = {
               false
             );
           }
-          message.edit(embed);
+          message.edit({ embeds: [embed] });
         }
       });
     });

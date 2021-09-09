@@ -29,6 +29,6 @@ module.exports = {
       i++;
     }
 
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

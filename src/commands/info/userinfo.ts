@@ -65,6 +65,6 @@ module.exports = {
         );
     }
 
-    msg.reply(embed);
+    msg.reply({ embeds: [embed] });
   },
 };

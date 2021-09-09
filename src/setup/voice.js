@@ -1,9 +1,9 @@
 module.exports = {
   setup(client) {
     const { MessageEmbed } = require("discord.js");
-    const DisTube = require("distube");
+    const { DisTube } = require("distube");
     const distube = new DisTube(client, {
-      searchSongs: false,
+      searchSongs: 0,
       emitNewSongOnly: true,
     });
     client.distube = distube;
@@ -17,8 +17,8 @@ module.exports = {
           : "Off"
       } | Autoplay: ${queue.autoplay ? "On" : "Off"}`;
 
-    client.distube
-      .on("playSong", (message, queue, song) => {
+    distube
+      .on("playSong", (queue, song) => {
         client.currentSong = song;
 
         const embed = new MessageEmbed()
@@ -32,13 +32,13 @@ module.exports = {
             },
             { name: "Requested by", value: `${song.user}`, inline: true }
           )
-          .setFooter(`${status(message.client.distube.getQueue(message))}`)
+          .setFooter(`${status(queue)}`)
           .setColor("#47a8e8");
 
-        message.channel.send(embed);
+        queue.textChannel.send({ embeds: [embed] });
       })
-      .on("addSong", (message, queue, song) => {
-        message.reply(
+      .on("addSong", (queue, song) => {
+        queue.textChannel.send(
           `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
         );
       })
@@ -51,16 +51,16 @@ module.exports = {
           }\` - \`${song.formattedDuration}\`\n${status(queue)}`
         );
       })
-      .on("addList", (message, queue, playlist) => {
-        message.reply(
+      .on("addList", (queue, playlist) => {
+        queue.textChannel.send(
           `Added \`${playlist.name}\` playlist (${
             playlist.songs.length
           } songs) to queue\n${status(queue)}`
         );
       })
-      .on("error", (message, e) => {
+      .on("error", (channel, e) => {
         console.error(e);
-        message.reply("An error encountered: " + e);
+        channel.send("An error encountered: " + e);
       });
   },
 };
