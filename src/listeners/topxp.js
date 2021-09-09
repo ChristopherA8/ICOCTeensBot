@@ -11,10 +11,9 @@ module.exports = {
         "SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 1"
       )
       .get("698590629344575500");
-    const topMem = await msg.guild.members.cache.get("279032930926592000"); // top.id.substr(19)
-    // console.log(
-    //   JSON.stringify(msg.guild.members.cache.get("279032930926592000"))
-    // );
+
+    const topMem = await msg.guild.members.cache.get(`${top.user}`);
+    console.log(topMem);
 
     if (!topMem.roles.cache.some((role) => role.id == `808429363392806952`)) {
       topMem.roles.add(`808429363392806952`);
