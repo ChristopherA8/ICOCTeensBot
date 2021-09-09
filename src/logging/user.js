@@ -66,7 +66,7 @@ module.exports = {
               "Nickname Changed",
               null,
               null,
-              `\`${before.nickname}\` to \`${after.nickname}\`\n\nfor ${before.user.tag}`,
+              `\`${before.displayName}\` to \`${after.displayName}\`\n\nfor ${before.user.tag}`,
               null,
               null,
               null,
