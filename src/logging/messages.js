@@ -26,6 +26,14 @@ module.exports = {
           ),
         ],
       });
+
+      if (message.attachments) {
+        message.attachments.forEach((attachment) => {
+          channel.send(
+            `Image deleted from **${message.author.tag}**\n` + attachment.url
+          );
+        });
+      }
     });
 
     client.on("messageDeleteBulk", (messages) => {
