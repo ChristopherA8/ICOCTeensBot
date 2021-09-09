@@ -1,30 +1,24 @@
 module.exports = {
-  menuHandler(interaction, client) {
+  async menuHandler(interaction, client) {
     if (interaction.customId == "clubs_select") {
-      let animeClub =
-        interaction.guild.channels.cache.get("762728186714128474");
-      var artClub = interaction.guild.channels.cache.get("768879621927600189");
-      var athleticClub =
-        interaction.guild.channels.cache.get("798057555459964938");
-      var fashionClub =
-        interaction.guild.channels.cache.get("862748480471302144");
-      var bookClub = interaction.guild.channels.cache.get("771017826559066132");
-      var dndClub = interaction.guild.channels.cache.get("785613556724531201");
-      var foodClub = interaction.guild.channels.cache.get("798057687249321994");
-      var gamingClub =
-        interaction.guild.channels.cache.get("768634091507286046");
-      var movieClub =
-        interaction.guild.channels.cache.get("780279298509504552");
-      var musicClub =
-        interaction.guild.channels.cache.get("768939597568147496");
-      var natureClub =
-        interaction.guild.channels.cache.get("831227653159387248");
-      var petCLub = interaction.guild.channels.cache.get("818309635232235521");
-      var stemClub = interaction.guild.channels.cache.get("776921664948273192");
-      var travelClub =
-        interaction.guild.channels.cache.get("799714906353303662");
+      const getChannel = (id) => interaction.guild.channels.cache.get(`${id}`);
 
-      function updateOverwrite(channel) {
+      let animeClub = getChannel("762728186714128474");
+      var artClub = getChannel("768879621927600189");
+      var athleticClub = getChannel("798057555459964938");
+      var fashionClub = getChannel("862748480471302144");
+      var bookClub = getChannel("771017826559066132");
+      var dndClub = getChannel("785613556724531201");
+      var foodClub = getChannel("798057687249321994");
+      var gamingClub = getChannel("768634091507286046");
+      var movieClub = getChannel("780279298509504552");
+      var musicClub = getChannel("768939597568147496");
+      var natureClub = getChannel("831227653159387248");
+      var petCLub = getChannel("818309635232235521");
+      var stemClub = getChannel("776921664948273192");
+      var travelClub = getChannel("799714906353303662");
+
+      const updateOverwrite = (channel) => {
         if (
           !channel.permissionOverwrites.cache.find(
             (mem) => mem.id == interaction.member.id
@@ -40,7 +34,7 @@ module.exports = {
             .get(interaction.member.id)
             .delete();
         }
-      }
+      };
 
       for (const value of interaction.values) {
         switch (value) {
