@@ -22,7 +22,7 @@ module.exports = {
     } else if (person.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
       msg.reply(`Don't mute an admin`);
     } else if (reason) {
-      person.roles.add(muteRole, { reason: reason });
+      person.roles.add(muteRole, reason);
       const muteEmbed = new MessageEmbed()
         .setTitle("Muted")
         .addFields(

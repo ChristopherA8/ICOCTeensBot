@@ -20,7 +20,7 @@ module.exports = {
     } else if (person.id == msg.author.id) {
       msg.reply(`baka`);
     } else if (reason) {
-      person.roles.remove(muteRole, { reason: reason });
+      person.roles.remove(muteRole, reason);
       const muteEmbed = new MessageEmbed()
         .setTitle("Unmuted")
         .addFields(
