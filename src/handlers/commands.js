@@ -59,7 +59,8 @@ module.exports = {
             if (
               msg.member.roles.cache.some(
                 (role) =>
-                  role.id == `698594429711417415` ||
+                  role.id == "698594429711417415" || // Staff
+                  role.id == "766331396977066044" || // Admin
                   msg.member.id == "493159317630091285" // Staff and emilio
               )
             ) {
