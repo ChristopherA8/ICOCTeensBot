@@ -1,3 +1,6 @@
+// Anti-Spam by rainqubit
+// https://github.com/rainqubit/spamnya
+
 module.exports = {
   messageLog: [],
   message: "",
