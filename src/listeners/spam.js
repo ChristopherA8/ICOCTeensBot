@@ -6,14 +6,16 @@ module.exports = {
 
     spam.log(msg, 50);
 
-    if (spam.tooQuick(4, 2000)) {
-      if (msg.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return;
+    if (spam.tooQuick(4, 1000)) {
+      // if (msg.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return;
       msg.member.roles.add(muteRole, "Spam");
+      console.log("tooQuick");
     }
 
-    if (spam.sameMessages(8, 30000)) {
-      if (msg.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return;
+    if (spam.sameMessages(4, 10000)) {
+      // if (msg.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return;
       msg.member.roles.add(muteRole, "Spam");
+      console.log("sameMessages");
     }
   },
 };
