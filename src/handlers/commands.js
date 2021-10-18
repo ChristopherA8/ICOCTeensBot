@@ -1,6 +1,6 @@
 module.exports = {
   async commandHandler(msg, prefix) {
-    const { Permissions } = require("discord.js");
+    const { Permissions, MessageFlags } = require("discord.js");
 
     if (msg.content.startsWith(prefix)) {
       const args = msg.content.slice(prefix.length).split(/ +/);
@@ -103,6 +103,16 @@ module.exports = {
             return;
           case 10:
             msg.channel.send(`Access Denied: Missing Permission Level 10`);
+            break;
+          case 11:
+            const found = command.memberIds.find((id) => msg.author.id == id);
+            if (found) {
+              command.execute(msg, args);
+              break;
+            }
+            msg.channel.send({
+              content: "You are not whitelisted for this command",
+            });
             break;
           default:
             command.execute(msg, args);
