@@ -17,6 +17,7 @@ module.exports = {
       var petCLub = getChannel("818309635232235521");
       var stemClub = getChannel("776921664948273192");
       var travelClub = getChannel("799714906353303662");
+      var tradingClub = getChannel("900401266319032340");
 
       const updateOverwrite = (channel) => {
         if (
@@ -79,6 +80,9 @@ module.exports = {
             break;
           case "travel":
             updateOverwrite(travelClub);
+            break;
+          case "trading":
+            updateOverwrite(tradingClub);
             break;
           default:
             break;
