@@ -19,7 +19,6 @@ module.exports = {
       let member = await msg.guild.members.cache.find(
         (mem) => mem.user.id == person.id
       );
-      console.log(member);
 
       embed.addField(
         `#${i} ${member ? member.username : "No data"}`,
