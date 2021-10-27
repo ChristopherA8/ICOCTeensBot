@@ -6,8 +6,6 @@ module.exports = {
   async execute(msg) {
     const { MessageEmbed } = require("discord.js");
 
-    let created = msg.guild.createdAt.toString().replace(/\([^)]*\)/g, "");
-
     const embed = new MessageEmbed()
       .setAuthor(`${msg.guild.name}`)
       .addFields(
@@ -16,7 +14,11 @@ module.exports = {
           value: `${msg.guild.memberCount}`,
           inline: true,
         },
-        { name: "Created At", value: `${created}`, inline: true },
+        {
+          name: "Created At",
+          value: `<t:${Math.trunc(msg.guild.createdAt.getTime() / 1000)}:f>`,
+          inline: true,
+        },
         {
           name: "Owner",
           value: `${await msg.guild.fetchOwner()}`,
