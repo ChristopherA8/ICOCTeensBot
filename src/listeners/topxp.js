@@ -1,6 +1,5 @@
 module.exports = {
   async listen(msg) {
-    /*
     const SQLite = require("better-sqlite3");
 
     // Create SQLite database
@@ -13,10 +12,8 @@ module.exports = {
       .get("698590629344575500");
 
     const topMem = await msg.guild.members.cache.get(`${top.user}`);
-    console.log(topMem);
 
     if (!topMem.roles.cache.some((role) => role.id == `808429363392806952`)) {
-      topMem.roles.add(`808429363392806952`);
       msg.guild.members.cache
         .filter((mem) =>
           mem.roles.cache.some((role) => role.id == `808429363392806952`)
@@ -24,6 +21,7 @@ module.exports = {
         .forEach((member) => {
           member.roles.remove(`808429363392806952`);
         });
-    }*/
+      topMem.roles.add(`808429363392806952`);
+    }
   },
 };
