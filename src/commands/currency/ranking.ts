@@ -14,16 +14,16 @@ module.exports = {
 
     const embed = new MessageEmbed().setTitle("Ranking").setColor("#47a8e8");
 
-    // If I use guildMember it'll die cause if a user is no longer in the guild then `member` is undefined
-    // async function getMember(id) {
-    //   return await msg.guild.members.cache.get(id);
-    // }
     let i = 1;
     for (let person of people) {
-      // let member = await getMember(person.id);
+      let member = await msg.guild.members.cache.find(
+        (mem) => mem.user.id == person.id
+      );
+      console.log(member);
+
       embed.addField(
-        `#${i} ${msg.client.users.cache.get(person.id)?.username}`,
-        `$${person.money}`,
+        `#${i} ${member ? member.username : "No data"}`,
+        `$${person.money ? person.money : "No Data"}`,
         false
       );
       i++;
