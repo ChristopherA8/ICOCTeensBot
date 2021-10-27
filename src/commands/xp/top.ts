@@ -15,9 +15,11 @@ module.exports = {
         "SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 50"
       )
       .all("698590629344575500");
+
     const embed = new MessageEmbed()
       .setTitle("Leaderboard")
       .setColor("#47a8e8");
+
     for (let i = start; i < end; i++) {
       embed.addField(
         `#${i + 1} ` + leaderboard[i].name,
@@ -25,34 +27,31 @@ module.exports = {
         false
       );
     }
+
     msg.reply({ embeds: [embed] }).then(async (message) => {
       await message.react("◀");
       await message.react("▶");
+
       const filter = (reaction, user) => {
         return (
           (reaction.emoji.name === "◀" || reaction.emoji.name === "▶") &&
-          user.bot !== true
+          !user.bot
         );
       };
-      const reactionCollector = message.createReactionCollector(filter, {
+
+      const reactionCollector = message.createReactionCollector({
+        filter,
         time: 100000,
       });
+
       reactionCollector.on("collect", async (reaction, user) => {
-        const userReactions = message.reactions.cache.filter((reaction) =>
-          reaction.users.cache.has(user.id)
-        );
-        try {
-          for (const reaction of userReactions.values()) {
-            await reaction.users.remove(user.id);
-          }
-        } catch (error) {
-          console.error("Failed to remove reactions.");
-        }
+        await reaction.users.remove(user.id);
 
         if (reaction.emoji.name === "◀" && start > 0) {
           start -= 5;
           end -= 5;
           embed.fields = [];
+
           for (let i = start; i < end; i++) {
             embed.addField(
               `#${i + 1} ` + leaderboard[i].name,
@@ -60,12 +59,15 @@ module.exports = {
               false
             );
           }
+
           message.edit({ embeds: [embed] });
         }
+
         if (reaction.emoji.name === "▶" && end < 50) {
           start += 5;
           end += 5;
           embed.fields = [];
+
           for (let i = start; i < end; i++) {
             embed.addField(
               `#${i + 1} ` + leaderboard[i].name,
@@ -73,6 +75,7 @@ module.exports = {
               false
             );
           }
+
           message.edit({ embeds: [embed] });
         }
       });
