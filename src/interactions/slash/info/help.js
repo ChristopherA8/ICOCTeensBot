@@ -66,23 +66,17 @@ module.exports = {
           user.bot !== true
         );
       };
-      const reactionCollector = message.createReactionCollector(filter, {
+      const reactionCollector = message.createReactionCollector({
+        filter,
         time: 100000,
       });
       reactionCollector.on("collect", async (reaction, user) => {
-        const userReactions = message.reactions.cache.filter((reaction) =>
-          reaction.users.cache.has(user.id)
-        );
-        try {
-          for (const reaction of userReactions.values()) {
-            await reaction.users.remove(user.id);
-          }
-        } catch (error) {
-          console.error("Failed to remove reactions.");
-        }
+        await reaction.users.remove(user.id);
+
         if (reaction.emoji.name === "◀" && page > 1) page--;
         if (reaction.emoji.name === "▶" && page < 6) page++;
         embed.fields = [];
+
         switch (page) {
           case 1:
             embed.setTitle("Info");

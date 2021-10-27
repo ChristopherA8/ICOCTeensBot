@@ -7,13 +7,13 @@ module.exports = {
     client.slash = new Collection();
 
     try {
-      const folders = fs.readdirSync("./src/commands/slashCommands");
+      const folders = fs.readdirSync("./src/interactions/slash");
       for (const folder of folders) {
         const files = fs
-          .readdirSync(`./src/commands/slashCommands/${folder}`)
+          .readdirSync(`./src/interactions/slash/${folder}`)
           .filter((file) => file.endsWith(".js"));
         for (const file of files) {
-          const slashCommand = require(`../commands/slashCommands/${folder}/${file}`);
+          const slashCommand = require(`../interactions/slash/${folder}/${file}`);
           client.slash.set(slashCommand.name, slashCommand);
         }
       }
