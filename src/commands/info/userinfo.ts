@@ -22,12 +22,12 @@ module.exports = {
         .addFields(
           {
             name: "Created",
-            value: `<t:${ping.user.createdAt.getTime()}:f>`,
+            value: `<t:${Math.trunc(ping.user.createdAt.getTime() / 1000)}:f>`,
             inline: true,
           },
           {
             name: "Joined",
-            value: `<t:${ping.joinedAt.getTime()}:f>`,
+            value: `<t:${Math.trunc(ping.joinedAt.getTime() / 1000)}:f>`,
             inline: true,
           },
           { name: "Nickname", value: `${ping.displayName}`, inline: true },
@@ -51,12 +51,12 @@ module.exports = {
         .addFields(
           {
             name: "Created",
-            value: `<t:${msg.author.createdAt.getTime()}:f>`,
+            value: `<t:${Math.trunc(msg.author.createdAt.getTime() / 1000)}:f>`,
             inline: true,
           },
           {
             name: "Joined",
-            value: `<t:${msg.member.joinedAt.getTime()}:f>`,
+            value: `<t:${Math.trunc(msg.member.joinedAt.getTime() / 1000)}:f>`,
             inline: true,
           },
           {
