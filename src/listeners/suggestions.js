@@ -22,7 +22,8 @@ module.exports = {
       const filter = (reaction, user) =>
         reaction.emoji.name === "✅" && user.bot == false;
 
-      const collector = message.createReactionCollector(filter, {
+      const collector = message.createReactionCollector({
+        filter,
         maxUsers: 3,
       });
 
@@ -30,7 +31,7 @@ module.exports = {
 
       collector.on("end", (collected) => {
         let channel = message.guild.channels.cache.get("837126068564525106");
-        channel.send({ embeds: message.embeds[0] });
+        channel.send({ embeds: [message.embeds[0]] });
       });
     });
   },
