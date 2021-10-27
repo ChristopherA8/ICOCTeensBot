@@ -1,7 +1,7 @@
 module.exports = {
   name: "@someone",
   category: "misc",
-  description: "Ping a random person",
+  description: "Ping a random person, must be whitelisted to use this command",
   permissions: 11, // Special permission 11 requires a memberID
   memberIds: [544890228507410442], // Jack
   async execute(msg) {
