@@ -3,6 +3,8 @@ module.exports = {
     const guild = client.guilds.cache.get("698590629344575500");
     const birthdayRole = guild.roles.cache.get("832022073366806531");
     const fs = require("fs");
+    let communityAnnouncmensdffdfsfhkshfkjhfjdhfksjhfkjdhfdjkhkjfdshkfjdhfjksdhgjkdfbhgvskjdfhgkdjfbhgsdiufyhtgdjfkvhbuikdfjvbgydkriudyvbtrdekjuihtbyerdiukbbyvtgerkiuvgty =
+      guild.channels.cache.get("818309077431746592");
 
     setInterval(() => {
       let now = new Date();
@@ -19,6 +21,9 @@ module.exports = {
         if (person.date == monthDay) {
           let member = guild.members.cache.get(person.id);
           member.roles.add(birthdayRole);
+          communityAnnouncmensdffdfsfhkshfkjhfjdhfksjhfkjdhfdjkhkjfdshkfjdhfjksdhgjkdfbhgvskjdfhgkdjfbhgsdiufyhtgdjfkvhbuikdfjvbgydkriudyvbtrdekjuihtbyerdiukbbyvtgerkiuvgty.send(
+            `Happy Birthday <@${member.id}>!!!`
+          );
         }
       }
     }, 60 * 60 * 1000);
