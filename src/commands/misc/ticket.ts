@@ -5,7 +5,7 @@ module.exports = {
   permissions: 1,
   async execute(msg, args) {
     const { MessageEmbed } = require("discord.js");
-    const channel = msg.guild.channels.cache.get("768931736414584902");
+    const channel = msg.guild.channels.cache.get("698594785803501629");
     let ticket = args.join(" ");
     if (!ticket) {
       msg.reply(`Missing message`);
