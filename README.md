@@ -1,6 +1,6 @@
 # ICOC Teens Bot
 
-Discord bot for ICOC Teens Discord Server
+Discord bot for ICOC Teens Discord Server using Discord.js ❤
 
 Rewrite of [Chr1sDev/ICOC-Teens](https://github.com/Chr1sDev/ICOC-Teens)
 
