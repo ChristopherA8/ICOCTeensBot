@@ -4,7 +4,7 @@ module.exports = {
     const AUDIT_LOG_ID = channels["AUDIT_LOG_ID"];
 
     const { embed } = require("../helpers/embed.ts");
-    const { secondsToHms } = require("../helpers/conversions.ts");
+    //////////////////////////////////////////////// const { secondsToHms } = require("../helpers/conversions.ts");
 
     client.on("inviteCreate", (invite) => {
       if (invite.guild.id !== "698590629344575500") return;
@@ -25,7 +25,7 @@ module.exports = {
               { name: "Max Uses", value: `${maxUses}`, inline: true },
               {
                 name: "Duration",
-                value: `${secondsToHms(invite.maxAge)}`,
+                value: `<t:${Math.floor(Date.now() / 1000) + invite.maxAge}:f>`,
                 inline: true,
               },
             ],
