@@ -9,7 +9,11 @@ module.exports = {
     const { MessageEmbed } = require("discord.js");
     const embed = new MessageEmbed().setTitle("Club Members");
     clubs.forEach((club) => {
-      embed.addField(club.name, `${club.permissionOverwrites.size}`, true);
+      embed.addField(
+        club.name,
+        `${club.permissionOverwrites.cache.size}`,
+        true
+      );
     });
     msg.channel.send({ embeds: [embed] });
   },
