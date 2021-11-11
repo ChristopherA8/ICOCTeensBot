@@ -20,8 +20,8 @@ module.exports = {
         if (person.date == monthDay) {
           let member = guild.members.cache.get(person.id);
           member.roles.add(birthdayRole);
-          if (!member.roles.cache.has(birthdayRole))
-            communityAnnouncements.send(`Happy Birthday <@${member.id}>!!!`);
+          // if (!member.roles.cache.has(birthdayRole))
+          //   communityAnnouncements.send(`Happy Birthday <@${member.id}>!!!`);
         }
       }
     }, 60 * 60 * 1000);
