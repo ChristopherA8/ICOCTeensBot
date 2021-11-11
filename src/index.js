@@ -7,7 +7,7 @@ client.on(`ready`, () => {
   console.log(`Logged in as ${client.user.tag}`);
   // client.user.setActivity(`/help`, { type: "WATCHING" });
   setInterval(() => {
-    client.user.setActivity(`frogge`, { type: "WATCHING" });
+    client.user.setActivity("Jujutsu High", { type: "WATCHING" });
   }, 60 * 60 * 1000); // 1hr
 
   // Run setup
