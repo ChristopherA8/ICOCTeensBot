@@ -25,7 +25,6 @@ module.exports = {
         }
       }
     }, 60 * 60 * 1000);
-    // 60 * 60 * 1000
     // 1hr in milliseconds
   },
 };
