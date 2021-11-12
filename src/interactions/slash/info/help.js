@@ -58,11 +58,11 @@ module.exports = {
     }
     interaction.reply({ embeds: [embed] });
     interaction.fetchReply().then((message) => {
-      message.react("👉");
-      message.react("👈");
+      message.react("◀");
+      message.react("▶");
       const filter = (reaction, user) => {
         return (
-          (reaction.emoji.name === "👉" || reaction.emoji.name === "👈") &&
+          (reaction.emoji.name === "◀" || reaction.emoji.name === "▶") &&
           user.bot !== true
         );
       };
@@ -73,8 +73,8 @@ module.exports = {
       reactionCollector.on("collect", async (reaction, user) => {
         await reaction.users.remove(user.id);
 
-        if (reaction.emoji.name === "👉" && page > 1) page--;
-        if (reaction.emoji.name === "👈" && page < 6) page++;
+        if (reaction.emoji.name === "◀" && page > 1) page--;
+        if (reaction.emoji.name === "▶" && page < 6) page++;
         embed.fields = [];
 
         switch (page) {
