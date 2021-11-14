@@ -1,9 +1,9 @@
 module.exports = {
   listen(msg) {
-    if (msg.channel.id == "770730379077353494") return;
+    if (msg.channel.id == "770730379077353494") return; // Rules channel
     const { MessageEmbed } = require("discord.js");
-    const { words } = require("../../wordFilter.json");
-    const channel = msg.client.channels.cache.get("768882922379280464");
+    const words = msg.client.filter;
+    const channel = msg.client.channels.cache.get(process.env.MESSAGE_LOG_ID);
     const args = msg.content.split(/ +/);
 
     for (let arg of args) {

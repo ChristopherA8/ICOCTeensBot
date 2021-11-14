@@ -1,5 +1,6 @@
 const { Client, Intents } = require("discord.js");
 const client = new Client({ intents: Object.values(Intents.FLAGS) });
+const Utils = require("./utils");
 const fs = require("fs");
 const chalk = require("chalk");
 require("dotenv").config();
@@ -10,8 +11,14 @@ client.on(`ready`, () => {
   );
   // client.user.setActivity(`/help`, { type: "WATCHING" });
   setInterval(() => {
-    client.user.setActivity("Jujutsu High", { type: "WATCHING" });
+    client.user.setActivity(
+      "Demon Slayer: Kimetsu no Yaiba – The Hinokami Chronicles",
+      { type: "PLAYING" }
+    );
   }, 60 * 60 * 1000); // 1hr
+
+  // Get word filter
+  Utils.getFilter(client);
 
   // Run setup
   const files = fs
