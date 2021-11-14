@@ -1,3 +1,4 @@
+// Fetch filter and add it to client
 const getFilter = (client) => {
   const chalk = require("chalk");
   let MongoClient = require("mongodb").MongoClient;
