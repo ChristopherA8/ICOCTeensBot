@@ -4,12 +4,13 @@ const Utils = require("./utils");
 const fs = require("fs");
 const chalk = require("chalk");
 require("dotenv").config();
+const mongo = require("./mongo/Mongo");
 
-client.on(`ready`, () => {
+client.on(`ready`, async () => {
   console.log(
     `${chalk.blue.bold("[BOT]")} Logged in as ${chalk.green(client.user.tag)}`
   );
-  // client.user.setActivity(`/help`, { type: "WATCHING" });
+
   setInterval(() => {
     client.user.setActivity(
       "Demon Slayer: Kimetsu no Yaiba – The Hinokami Chronicles",
@@ -17,8 +18,8 @@ client.on(`ready`, () => {
     );
   }, 60 * 60 * 1000); // 1hr
 
-  // Get word filter
-  Utils.getFilter(client);
+  // Initialize database connection
+  await mongo.init();
 
   // Run setup
   const files = fs
