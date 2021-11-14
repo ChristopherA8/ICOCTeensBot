@@ -4,8 +4,6 @@ module.exports = {
   description: "Convert the attached file to the given file type",
   permissions: 1,
   async execute(msg, args) {
-    const { cloudConvertToken } = require("../../../config.json");
-
     if (!args[0]) {
       msg.reply(`Missing file extension to convert to`);
       return;
@@ -15,7 +13,7 @@ module.exports = {
     }
 
     const CloudConvert = require("cloudconvert");
-    const cloudConvert = new CloudConvert(cloudConvertToken);
+    const cloudConvert = new CloudConvert(process.env.CLOUD_CONVERT_TOKEN);
 
     let job = await cloudConvert.jobs.create({
       tasks: {

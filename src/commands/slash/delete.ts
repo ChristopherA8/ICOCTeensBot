@@ -2,11 +2,10 @@ module.exports = {
   name: "delete",
   permissions: 9,
   execute(msg) {
-    const { token } = require("../../../config.json");
     const axios = require("axios");
     let axios1 = axios.create({
       headers: {
-        Authorization: `Bot ${token}`,
+        Authorization: `Bot ${process.env.TOKEN}`,
       },
     });
     axios1({

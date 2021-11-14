@@ -3,12 +3,11 @@ module.exports = {
   permissions: 9,
   execute(msg) {
     const { WebhookClient, MessageEmbed } = require("discord.js");
-    const { updateWebhook } = require("../../../config.json");
 
     const webhookClient = new WebhookClient({
-      id: updateWebhook.id,
-      token: updateWebhook.token,
-      url: updateWebhook.url,
+      id: process.env.UPDATE_ID,
+      token: process.env.UPDATE_TOKEN,
+      url: process.env.UPDATE_WEBHOOK,
     });
 
     const embed = new MessageEmbed()

@@ -1,7 +1,6 @@
 module.exports = {
   log(client) {
-    const { channels } = require("../../config.json");
-    const AUDIT_LOG_ID = channels["AUDIT_LOG_ID"];
+    const AUDIT_LOG_ID = process.env.AUDIT_LOG_ID;
 
     const { embed } = require("../helpers/embed.ts");
     client.on("roleCreate", (newRole) => {

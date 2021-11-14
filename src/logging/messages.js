@@ -1,7 +1,6 @@
 module.exports = {
   log(client) {
-    const { channels } = require("../../config.json");
-    const MESSAGE_LOG_ID = channels["MESSAGE_LOG_ID"];
+    const MESSAGE_LOG_ID = process.env.MESSAGE_LOG_ID;
     const { embed } = require("../helpers/embed.ts");
 
     client.on("messageDelete", (message) => {

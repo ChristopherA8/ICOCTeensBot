@@ -1,7 +1,7 @@
 const { Client, Intents } = require("discord.js");
 const client = new Client({ intents: Object.values(Intents.FLAGS) });
 const fs = require("fs");
-const { token, prefix } = require("../config.json");
+require("dotenv").config();
 
 client.on(`ready`, () => {
   console.log(`Logged in as ${client.user.tag}`);
@@ -47,7 +47,7 @@ client.on("messageCreate", async (msg) => {
   }
 
   const { commandHandler } = require("./handlers/commands.js");
-  commandHandler(msg, prefix);
+  commandHandler(msg, process.env.PREFIX);
 });
 
 client.on("interactionCreate", async (interaction) => {
@@ -67,4 +67,4 @@ client.on("interactionCreate", async (interaction) => {
   }
 });
 
-client.login(token);
+client.login(process.env.TOKEN);
