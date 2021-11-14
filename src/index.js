@@ -1,10 +1,13 @@
 const { Client, Intents } = require("discord.js");
 const client = new Client({ intents: Object.values(Intents.FLAGS) });
 const fs = require("fs");
+const chalk = require("chalk");
 require("dotenv").config();
 
 client.on(`ready`, () => {
-  console.log(`Logged in as ${client.user.tag}`);
+  console.log(
+    `${chalk.blue.bold("[BOT]")} Logged in as ${chalk.green(client.user.tag)}`
+  );
   // client.user.setActivity(`/help`, { type: "WATCHING" });
   setInterval(() => {
     client.user.setActivity("Jujutsu High", { type: "WATCHING" });
