@@ -19,8 +19,10 @@ module.exports = {
     //     db.close();
     //   });
     // });
-    // const { Points } = require("../../mongo/Mongo");
-    // const leaderboard = await Points.getAll();
-    // console.log(await leaderboard.toArray());
+
+    const { Points } = require("../../mongo/Mongo");
+
+    const me2 = await Points.getLeaderboard();
+    console.log(await me2);
   },
 };
