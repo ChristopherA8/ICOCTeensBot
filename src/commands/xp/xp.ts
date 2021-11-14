@@ -3,26 +3,18 @@ module.exports = {
   category: "xp",
   description: "Get members xp",
   permissions: 1,
-  execute(msg) {
-    const SQLite = require("better-sqlite3");
-    const sql = new SQLite("./src/databases/scores.sqlite");
+  async execute(msg) {
     const { MessageEmbed } = require("discord.js");
 
     const ping = msg.mentions.members.first();
 
-    sql.prepare("SELECT * FROM scores WHERE user = ? AND guild = ?");
-    sql.prepare(
-      "INSERT OR REPLACE INTO scores (id, user, guild, points, level, name) VALUES (@id, @user, @guild, @points, @level, @name);"
-    );
+    const { Points } = require("../../mongo/Mongo");
 
-    const leaderboard = sql
-      .prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC")
-      .all("698590629344575500");
+    const leaderboard = await Points.getLeaderboard();
 
     if (!ping) {
-      let score = sql
-        .prepare("SELECT * FROM scores WHERE user = ? AND guild = ?")
-        .get(msg.author.id, "698590629344575500");
+      let score = await Points.getPerson(msg.author.id);
+      score = score[0];
 
       if (!score) {
         msg.reply("Talk to get some xp");
@@ -45,15 +37,17 @@ module.exports = {
         .setColor("#47a8e8");
       msg.reply({ embeds: [embed] });
     } else {
-      let score = sql
-        .prepare("SELECT * FROM scores WHERE user = ? AND guild = ?")
-        .get(ping.id, "698590629344575500");
+      let score = await Points.getPerson(ping.id);
+      score = score[0];
+
       if (!score) {
-        msg.reply("They need to talk and get xp first");
+        msg.reply("They need to talk to get xp");
         return;
       }
+
       const hasTheRightId = ({ user }) => user == ping.id;
       let rank = leaderboard.findIndex(hasTheRightId) + 1;
+
       const embed = new MessageEmbed()
         .setAuthor(ping.user.tag, ping.user.displayAvatarURL({ dynamic: true }))
         .addFields(
