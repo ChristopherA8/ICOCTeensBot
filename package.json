@@ -28,7 +28,9 @@
     "ffmpeg-static": "^4.3.0",
     "libsodium-wrappers": "^0.7.9",
     "mongodb": "^4.1.4",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
   },
   "devDependencies": {
     "@types/node": "^15.6.1"
