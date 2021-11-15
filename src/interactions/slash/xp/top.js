@@ -1,5 +1,9 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
+
 module.exports = {
-  name: "top",
+  data: new SlashCommandBuilder()
+    .setName("top")
+    .setDescription("Get xp leaderboard"),
   async execute(interaction) {
     const { MessageEmbed } = require("discord.js");
     const { Points } = require("../../../mongo/Mongo");

@@ -1,5 +1,9 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
+
 module.exports = {
-  name: "help",
+  data: new SlashCommandBuilder()
+    .setName("help")
+    .setDescription("Lists all commands"),
   execute(interaction) {
     const { MessageEmbed } = require("discord.js");
     let categories = ["info", "xp", "misc", "moderation", "voice", "currency"];

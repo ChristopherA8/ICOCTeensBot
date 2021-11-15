@@ -1,5 +1,7 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
+
 module.exports = {
-  name: "xp",
+  data: new SlashCommandBuilder().setName("xp").setDescription("Get users xp"),
   async execute(interaction) {
     const { MessageEmbed } = require("discord.js");
 
