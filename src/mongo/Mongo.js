@@ -3,7 +3,7 @@ const chalk = require("chalk");
 const Points = require("./Points");
 const Filter = require("./Filter");
 
-class MongoBot {
+class Mongo {
   constructor() {
     const url = "mongodb://localhost:27017/";
 
@@ -23,4 +23,4 @@ class MongoBot {
   }
 }
 
-module.exports = new MongoBot();
+module.exports = new Mongo();
