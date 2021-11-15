@@ -20,6 +20,17 @@ module.exports = {
     //   });
     // });
 
+    /* Structure of person object
+    {
+      id: '698590629344575500-279032930926592000',
+      user: '279032930926592000',
+      guild: '698590629344575500',
+      points: 5402,
+      level: 22,
+      name: 'christopher#8888'
+    }
+    */
+
     const { Points } = require("../../mongo/Mongo");
 
     const me2 = await Points.getLeaderboard();
