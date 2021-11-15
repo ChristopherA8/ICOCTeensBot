@@ -3,18 +3,14 @@ module.exports = {
   category: "xp",
   description: "Get XP Leaderboard",
   permissions: 1,
-  execute(msg) {
+  async execute(msg) {
     const { MessageEmbed } = require("discord.js");
-    const SQLite = require("better-sqlite3");
-    const sql = new SQLite("./src/databases/scores.sqlite");
+    const { Points } = require("../../mongo/Mongo");
+
+    const leaderboard = await Points.getLeaderboard();
+
     let start = 0;
     let end = 5;
-
-    const leaderboard = sql
-      .prepare(
-        "SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 50"
-      )
-      .all("698590629344575500");
 
     const embed = new MessageEmbed()
       .setTitle("Leaderboard")
