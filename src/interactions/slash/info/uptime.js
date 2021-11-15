@@ -1,10 +1,11 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
+
 module.exports = {
-  name: "uptime",
-  category: "info",
-  description: "How long the bot has been running",
-  permissions: 1,
-  execute(msg) {
-    let totalSeconds = msg.client.uptime / 1000;
+  data: new SlashCommandBuilder()
+    .setName("uptime")
+    .setDescription("How long the bot has been running"),
+  async execute(interaction) {
+    let totalSeconds = interaction.client.uptime / 1000;
     let days = Math.floor(totalSeconds / 86400);
     totalSeconds %= 86400;
     let hours = Math.floor(totalSeconds / 3600);
@@ -13,6 +14,6 @@ module.exports = {
     let seconds = Math.floor(totalSeconds % 60);
 
     let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
-    msg.reply(uptime);
+    interaction.reply(uptime);
   },
 };
