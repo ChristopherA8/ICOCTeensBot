@@ -22,7 +22,7 @@ module.exports = {
     person = await Points.getPerson(msg.author.id);
     person = person[0];
 
-    setTimeout(() => {
+    setTimeout(async () => {
       let words = msg.content.split(/ +/);
       let wordsCount = words.length;
       if (wordsCount <= 25) {
