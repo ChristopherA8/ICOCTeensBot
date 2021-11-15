@@ -48,5 +48,9 @@ class Points {
       .toArray();
     return leaderboard;
   }
+  async getLeader() {
+    const leader = await this.collection.find().sort({ points: -1 }).toArray();
+    return leader[0];
+  }
 }
 module.exports = Points;
