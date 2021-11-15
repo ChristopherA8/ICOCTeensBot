@@ -3,9 +3,12 @@ module.exports = {
   permission: 1,
   category: "voice",
   description: "Pause music",
-  execute(msg) {
+  async execute(msg) {
+    const Voice = require("../../voice/Voice");
+    let distube = await Voice.getClient();
+
     const voiceChannel = msg.member.voice.channel;
     if (!voiceChannel) return msg.reply(`Please join a voice channel first!`);
-    msg.client.distube.pause(msg);
+    distube.pause(msg);
   },
 };

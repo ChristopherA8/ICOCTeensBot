@@ -1,20 +1,14 @@
 module.exports = {
-  name: "play",
+  name: "resume",
   permission: 1,
   category: "voice",
-  description: "Play music in vc",
-  async execute(msg, args) {
+  description: "Resume music",
+  async execute(msg) {
     const Voice = require("../../voice/Voice");
     let distube = await Voice.getClient();
 
     const voiceChannel = msg.member.voice.channel;
     if (!voiceChannel) return msg.reply(`Please join a voice channel first!`);
-
-    if (!args[0]) {
-      msg.reply(`Missing song name`);
-      return;
-    }
-
-    distube.play(msg, args.join(" "));
+    distube.resume(msg);
   },
 };

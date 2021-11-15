@@ -3,7 +3,10 @@ module.exports = {
   permission: 1,
   category: "voice",
   description: "Adjust the music volume 0-100",
-  execute(msg, args) {
+  async execute(msg, args) {
+    const Voice = require("../../voice/Voice");
+    let distube = await Voice.getClient();
+
     const voiceChannel = msg.member.voice.channel;
     if (!voiceChannel) return msg.reply(`Please join a voice channel first!`);
     if (!args[0]) {
@@ -13,6 +16,6 @@ module.exports = {
       msg.reply("Supplied amount is not a number");
       return;
     }
-    msg.client.distube.setVolume(msg, Number(args[0]));
+    distube.setVolume(msg, Number(args[0]));
   },
 };

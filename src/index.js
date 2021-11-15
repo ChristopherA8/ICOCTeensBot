@@ -1,10 +1,11 @@
 const { Client, Intents } = require("discord.js");
 const client = new Client({ intents: Object.values(Intents.FLAGS) });
-const Utils = require("./utils");
+exports.client = client;
 const fs = require("fs");
 const chalk = require("chalk");
 require("dotenv").config();
 const mongo = require("./mongo/Mongo");
+const voice = require("./voice/Voice");
 
 client.on(`ready`, async () => {
   console.log(
@@ -20,6 +21,9 @@ client.on(`ready`, async () => {
 
   // Initialize database connection
   await mongo.init();
+
+  // Initialize distube client
+  await voice.init();
 
   // Run setup
   const files = fs
