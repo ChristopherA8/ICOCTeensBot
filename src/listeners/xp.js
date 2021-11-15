@@ -22,14 +22,16 @@ module.exports = {
     person = await Points.getPerson(msg.author.id);
     person = person[0];
 
-    let words = msg.content.split(/ +/);
-    let wordsCount = words.length;
-    if (wordsCount <= 25) {
-      person.points += wordsCount;
-    } else {
-      person.points += 25;
-    }
-    await Points.updatePerson(person);
+    setTimeout(() => {
+      let words = msg.content.split(/ +/);
+      let wordsCount = words.length;
+      if (wordsCount <= 25) {
+        person.points += wordsCount;
+      } else {
+        person.points += 25;
+      }
+      await Points.updatePerson(person);
+    }, 6000);
 
     const curLevel = Math.floor(0.3 * Math.sqrt(person.points));
 
