@@ -1,22 +1,14 @@
 module.exports = {
   name: "xp",
-  execute(interaction) {
-    const SQLite = require("better-sqlite3");
-    const sql = new SQLite("./src/databases/scores.sqlite");
+  async execute(interaction) {
     const { MessageEmbed } = require("discord.js");
 
-    sql.prepare("SELECT * FROM scores WHERE user = ? AND guild = ?");
-    sql.prepare(
-      "INSERT OR REPLACE INTO scores (id, user, guild, points, level, name) VALUES (@id, @user, @guild, @points, @level, @name);"
-    );
+    const { Points } = require("../../../mongo/Mongo");
 
-    const leaderboard = sql
-      .prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC")
-      .all("698590629344575500");
+    const leaderboard = await Points.getLeaderboard();
+    let score = await Points.getPerson(interaction.user.id);
+    score = score[0];
 
-    let score = sql
-      .prepare("SELECT * FROM scores WHERE user = ? AND guild = ?")
-      .get(interaction.user.id, "698590629344575500");
     if (!score) {
       interaction.reply("Talk to get some xp");
       return;
