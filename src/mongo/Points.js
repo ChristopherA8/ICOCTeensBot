@@ -2,7 +2,7 @@ class Points {
   constructor(db) {
     this.collection = db.collection("points");
   }
-  async setPerson(person) {
+  async addPerson(person) {
     /* Structure of person object
     {
       id: '698590629344575500-279032930926592000',
@@ -15,6 +15,22 @@ class Points {
     */
     const newPerson = await this.collection.insertOne(person);
     return newPerson;
+  }
+  async updatePerson(person) {
+    const aPerson = await this.collection.updateOne(
+      { user: person.user },
+      {
+        $set: {
+          id: person.id,
+          user: person.user,
+          guild: person.guild,
+          points: person.points,
+          level: person.level,
+          name: person.name,
+        },
+      }
+    );
+    return aPerson;
   }
   async getPerson(id) {
     let query = { user: id };
