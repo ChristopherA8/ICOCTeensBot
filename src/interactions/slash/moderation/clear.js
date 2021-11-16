@@ -13,7 +13,10 @@ module.exports = {
 
     if (!(amount >= 1 && amount <= 100)) {
       // Wait for discord.js to add support for integer option ranges
-      msg.reply("Hold up, don't clear the whole chat");
+      interaction.reply({
+        content: "Hold up, don't clear the whole chat",
+        ephemeral: true,
+      });
     } else {
       interaction.channel.messages
         .fetch()
@@ -23,9 +26,16 @@ module.exports = {
             .catch((err) => {
               interaction.reply(`${err}`);
             });
+          interaction.reply({
+            content: `Cleared ${amount} messages`,
+            ephemeral: true,
+          });
         })
         .catch((err) => {
-          interaction.reply("Error fetching messages");
+          interaction.reply({
+            content: "Error fetching messages",
+            ephemeral: true,
+          });
         });
     }
   },
