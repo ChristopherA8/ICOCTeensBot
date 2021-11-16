@@ -22,7 +22,7 @@ module.exports = {
         .fetch()
         .then(() => {
           interaction.channel
-            .bulkDelete(amount == 100 ? amount : amount + 1)
+            .bulkDelete(amount == 100 ? amount : amount)
             .catch((err) => {
               interaction.reply(`${err}`);
             });
