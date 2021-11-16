@@ -1,5 +1,7 @@
 module.exports = {
   async listen(msg) {
+    if (msg.channel.id == "768931736414584902") return; // the-dunegeon channel [TESTING]
+
     if (msg.channel.id == "770730379077353494") return; // Rules channel
     const { MessageEmbed } = require("discord.js");
 
