@@ -35,22 +35,24 @@ module.exports = {
       console.error(err);
     }
 
+    // Uncomment if messing with permissions a lot or need it
+    // Removing and adding all of the slash commands each time fills up the daily quota smh
     /* CLEAR SLASH COMMANDS */
-    let nothing = [];
-    rest
-      .put(
-        Routes.applicationGuildCommands(client.user.id, process.env.GUILD_ID),
-        {
-          body: nothing,
-        }
-      )
-      .then(() =>
-        console.log(
-          chalk.bold.blue("[BOT]") +
-            " Successfully cleared application commands"
-        )
-      )
-      .catch(console.error);
+    // let nothing = [];
+    // rest
+    //   .put(
+    //     Routes.applicationGuildCommands(client.user.id, process.env.GUILD_ID),
+    //     {
+    //       body: nothing,
+    //     }
+    //   )
+    //   .then(() =>
+    //     console.log(
+    //       chalk.bold.blue("[BOT]") +
+    //         " Successfully cleared application commands"
+    //     )
+    //   )
+    //   .catch(console.error);
     /***********************/
 
     await rest
