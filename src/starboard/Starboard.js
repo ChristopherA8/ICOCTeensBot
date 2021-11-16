@@ -10,6 +10,9 @@ module.exports = class {
     if (reaction.emoji.name !== "⭐") return;
     if (message.author.id === user.id) return; // You cannot star your own messages
     if (message.author.bot) return; // You cannot star a bots message
+
+    let reactionCount = reaction.users.cache.size;
+
     const starChannel = message.guild.channels.cache.get(
       process.env.STARBOARD_ID
     );
@@ -44,6 +47,8 @@ module.exports = class {
       await starMsg.edit({ embeds: [embed] });
     }
     if (!stars) {
+      if (reactionCount < process.env.STAR_COUNT) return; // It takes
+
       const image =
         message.attachments.size > 0
           ? await this.extension(reaction, message.attachments.first().url)
@@ -57,7 +62,7 @@ module.exports = class {
         .setDescription(message.cleanContent)
         .setAuthor(message.author.tag, message.author.displayAvatarURL())
         .setTimestamp(new Date())
-        .setFooter(`⭐ 1 | ${message.id}`)
+        .setFooter(`⭐ ${reactionCount} | ${message.id}`)
         .setImage(image);
       await starChannel.send({ embeds: [embed] });
     }
