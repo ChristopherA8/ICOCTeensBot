@@ -13,10 +13,7 @@ client.on(`ready`, async () => {
   );
 
   setInterval(() => {
-    client.user.setActivity(
-      "Demon Slayer: Kimetsu no Yaiba – The Hinokami Chronicles",
-      { type: "PLAYING" }
-    );
+    client.user.setActivity("house cleaning any%", { type: "PLAYING" });
   }, 60 * 60 * 1000); // 1hr
 
   // Initialize database connection
