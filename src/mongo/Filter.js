@@ -10,5 +10,14 @@ class Filter {
     const allWords = await this.collection.find({});
     return allWords.toArray();
   }
+  async checkWord(word) {
+    for (aWord in this.getWords()) {
+      if (aWord.toLowerCase() == word.toLowerCase()) {
+        return true
+      }
+    }
+    return false
+  }
 }
+
 module.exports = Filter;
