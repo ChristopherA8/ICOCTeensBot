@@ -36,7 +36,7 @@ module.exports = class {
       const embed = new MessageEmbed()
         .setColor(foundStar.color)
         .setDescription(foundStar.description)
-        .setAuthor(message.author.tag, message.author.displayAvatarURL)
+        .setAuthor(message.author.tag, message.author.displayAvatarURL())
         .setTimestamp()
         .setFooter(`⭐ ${newStarCount} | ${message.id}`)
         .setImage(image);
@@ -55,7 +55,7 @@ module.exports = class {
       const embed = new MessageEmbed()
         .setColor(15844367)
         .setDescription(message.cleanContent)
-        .setAuthor(message.author.tag, message.author.displayAvatarURL)
+        .setAuthor(message.author.tag, message.author.displayAvatarURL())
         .setTimestamp(new Date())
         .setFooter(`⭐ 1 | ${message.id}`)
         .setImage(image);
