@@ -4,7 +4,11 @@
   "description": "All-purpose discord bot for the ICOC Teens discord server",
   "main": "src/index.js",
   "scripts": {
-    "test": "node src/index.js"
+    "start": "pm2 start src/index.js --name 'ICOCTeensBot'",
+    "restart": "pm2 restart ICOCTeensBot",
+    "stop": "pm2 stop ICOCTeensBot",
+    "del": "pm2 del ICOCTeensBot",
+    "log": "pm2 log ICOCTeensBot"
   },
   "keywords": [
     "discord",
