@@ -8,17 +8,18 @@ class Filter {
   // }
 
   async checkWord(word) {
-    for (const aWord in await this.getWords()) {
+    let words = await this.getWords();
+    for (const aWord of words) {
       if (aWord.toLowerCase() == word.toLowerCase()) {
-        // return true;
-        console.log(`${aWord} ?= ${word}`);
+        return true;
       }
     }
   }
 
   async getWords() {
-    const allWords = await this.collection.find({});
-    return allWords.toArray();
+    const allWords = await this.collection.find({}).toArray();
+    let first = await allWords[0];
+    return first.words;
   }
 }
 
