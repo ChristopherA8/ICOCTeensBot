@@ -1,7 +1,5 @@
 module.exports = {
   async listen(msg) {
-    if (msg.channel.id !== "768931736414584902") return; // TESTING
-
     const { Filter } = require("../mongo/Mongo");
     const { MessageEmbed } = require("discord.js");
     const channel = msg.client.channels.cache.get(process.env.MESSAGE_LOG_ID);
