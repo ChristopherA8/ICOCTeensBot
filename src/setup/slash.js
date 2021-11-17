@@ -1,5 +1,3 @@
-const { permissions } = require("../interactions/slash/info/pfp");
-
 module.exports = {
   async setup(client) {
     const chalk = require("chalk");
