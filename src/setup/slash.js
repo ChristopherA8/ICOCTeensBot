@@ -81,7 +81,7 @@ module.exports = {
        * 2. ICOC Goat
        * 3. ICOC Champ
        * 4. Partner In Christ
-       * 5. Staff and emilio
+       * 5. Staff and Engineer
        * 6. Teen Leaders
        * 7. Admin
        * 8. Owner (me and chris)
@@ -111,7 +111,18 @@ module.exports = {
           await command.permissions.add({ permissions });
           break;
         case 5:
-          permissions[0].id = process.env.STAFF_ROLE_ID;
+          let permissions = [
+            {
+              id: process.env.ENGINEER_ROLE_ID,
+              type: "ROLE",
+              permission: true,
+            },
+            {
+              id: process.env.STAFF_ROLE_ID,
+              type: "ROLE",
+              permission: true,
+            },
+          ];
           await command.permissions.add({ permissions });
           break;
         case 6:
