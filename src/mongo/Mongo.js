@@ -2,6 +2,7 @@ const { MongoClient } = require("mongodb");
 const chalk = require("chalk");
 const Points = require("./Points");
 const Filter = require("./Filter");
+const Checklist = require("./Checklist");
 
 class Mongo {
   constructor() {
@@ -20,6 +21,7 @@ class Mongo {
     this.db = this.client.db("icocteens");
     this.Points = new Points(this.db);
     this.Filter = new Filter(this.db);
+    this.Checklist = new Checklist(this.db);
   }
 }
 
