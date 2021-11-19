@@ -14,7 +14,7 @@ class Checklist {
     const newItem = await this.collection.insertOne(item);
     return newItem;
   }
-  async updatePerson(item) {
+  async editItem(item) {
     const anItem = await this.collection.updateOne(
       { id: item.id },
       {
@@ -34,7 +34,7 @@ class Checklist {
     return anItem[0];
   }
   async getAll() {
-    const allItems = await this.collection.find({});
+    const allItems = await this.collection.find({}).toArray();
     return allItems;
   }
 }
