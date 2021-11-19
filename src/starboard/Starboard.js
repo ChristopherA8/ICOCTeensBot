@@ -36,20 +36,22 @@ module.exports = class {
       let newStarCount = parseInt(star[1]);
       if (type == "add") newStarCount++;
       if (type == "remove") newStarCount--;
+
       const embed = new MessageEmbed()
         .setColor(foundStar.color)
         .setDescription(
-          foundStar.description + `\n\n[Link to message](${message.url})`
+          `${foundStar.description}\n\n[Link to message](${message.url})`
         )
         .setAuthor(message.author.tag, message.author.displayAvatarURL())
         .setTimestamp()
         .setFooter(`⭐ ${newStarCount} | ${message.id}`)
         .setImage(image);
+
       const starMsg = await starChannel.messages.fetch(stars.id);
       await starMsg.edit({ embeds: [embed] });
     }
     if (!stars) {
-      if (reactionCount < process.env.STAR_COUNT) return; // It takes
+      if (reactionCount < process.env.STAR_COUNT) return; // It takes STAR_COUNT to make it on the board
 
       const image =
         message.attachments.size > 0
