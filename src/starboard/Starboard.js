@@ -38,7 +38,9 @@ module.exports = class {
       if (type == "remove") newStarCount--;
       const embed = new MessageEmbed()
         .setColor(foundStar.color)
-        .setDescription(foundStar.description)
+        .setDescription(
+          foundStar.description + `\n\n[Link to message](${message.url})`
+        )
         .setAuthor(message.author.tag, message.author.displayAvatarURL())
         .setTimestamp()
         .setFooter(`⭐ ${newStarCount} | ${message.id}`)
@@ -59,7 +61,9 @@ module.exports = class {
         );
       const embed = new MessageEmbed()
         .setColor(15844367)
-        .setDescription(message.cleanContent)
+        .setDescription(
+          message.cleanContent + `\n\n[Link to message](${message.url})`
+        )
         .setAuthor(message.author.tag, message.author.displayAvatarURL())
         .setTimestamp(new Date())
         .setFooter(`⭐ ${reactionCount} | ${message.id}`)
