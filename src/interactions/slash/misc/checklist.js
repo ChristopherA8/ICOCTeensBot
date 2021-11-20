@@ -70,22 +70,6 @@ module.exports = {
     ),
   permissions: 5,
   async execute(interaction) {
-    /*
-    add
-    !checklist add This is a new item
-    check
-    !checklist check 1
-    uncheck
-    !checklist uncheck 1
-    del
-    !checklist del 1
-    note
-    !checklist note 1 [old]
-    addnote
-    !checklist addnote 1 This is a note [old]
-    edit
-    !checklist edit 1 This replaces the old note [old]
-    */
     const { Checklist } = require("../../../mongo/Mongo");
     const { MessageEmbed } = require("discord.js");
 
