@@ -28,6 +28,33 @@ class Checklist {
     );
     return anItem;
   }
+  async removeItem(id) {
+    let query = { id: id };
+    await this.collection.deleteOne(query);
+    return;
+  }
+  async checkItem(id) {
+    await this.collection.updateOne(
+      { id: id },
+      {
+        $set: {
+          completed: true,
+        },
+      }
+    );
+    return;
+  }
+  async uncheckItem(id) {
+    await this.collection.updateOne(
+      { id: id },
+      {
+        $set: {
+          completed: false,
+        },
+      }
+    );
+    return;
+  }
   async getItem(id) {
     let query = { id: id };
     const anItem = await this.collection.find(query).toArray();

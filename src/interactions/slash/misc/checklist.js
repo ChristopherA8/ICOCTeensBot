@@ -42,6 +42,17 @@ module.exports = {
     )
     .addSubcommand((subcommand) =>
       subcommand
+        .setName("uncheck")
+        .setDescription("Mark an item as not done")
+        .addIntegerOption((option) =>
+          option
+            .setName("uncheck_id")
+            .setDescription("Checklist item id")
+            .setRequired(true)
+        )
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
         .setName("edit")
         .setDescription("Edit an item in the list")
         .addIntegerOption((option) =>
@@ -87,11 +98,13 @@ module.exports = {
           .setFooter(`${aList.length} items`);
 
         for (item of aList) {
-          let senor = interaction.guild.members.cache.get(item.creator);
+          let senor = await interaction.guild.members.cache.get(item.creator);
           listEmbed.addField(
-            `Item ${item.id + 1} | ${senor.user.tag}`,
-            item.content ? item.content : "none",
-            false
+            `${item.id + 1}.`,
+            `\`\`\`${item.content ? item.content : "null"} | ${
+              item.completed ? "✅" : "❌"
+            }\`\`\``,
+            true
           );
         }
 
@@ -100,7 +113,7 @@ module.exports = {
 
       case "add":
         let bList = await Checklist.getAll();
-        let addInput = interaction.options.getString("input");
+        let addInput = interaction.options.getString("item");
 
         let anItem = {
           id: bList.length,
@@ -109,8 +122,7 @@ module.exports = {
           completed: false,
         };
 
-        let newItem = await Checklist.addItem(anItem);
-        console.log(JSON.stringify(newItem, null, 2));
+        await Checklist.addItem(anItem);
 
         let cList = await Checklist.getAll();
 
@@ -118,27 +130,83 @@ module.exports = {
           .setAuthor("Checklist")
           .setFooter(`${cList.length} items`);
 
-        //\`${newItem.content}\`
+        for (item of bList) {
+          let senora = await interaction.guild.members.cache.get(item.creator);
+          addEmbed.addField(
+            `Item ${item.id + 1}`,
+            `\`\`\`${item.content ? item.content : "null"}\`\`\``,
+            false
+          );
+        }
+
         interaction.reply({
-          content: `Added `,
+          content: `Added \`${addInput}\``,
           embeds: [addEmbed],
         });
         break;
 
       case "remove":
+        let remove_id = interaction.options.getInteger("remove_id");
+        let rItem = await Checklist.getItem(remove_id - 1);
+        if (!rItem)
+          return interaction.reply({
+            content: "Item ID not found",
+            ephemeral: true,
+          });
+
+        Checklist.removeItem(remove_id - 1);
+        interaction.reply({
+          content: `Removed item ${remove_id} from checklist`,
+        });
         break;
 
       case "check":
+        let check_id = interaction.options.getInteger("check_id");
+        let cItem = await Checklist.getItem(check_id - 1);
+        if (!cItem)
+          return interaction.reply({
+            content: "Item ID not found",
+            ephemeral: true,
+          });
+
+        Checklist.checkItem(check_id - 1);
+        interaction.reply({ content: `Item ${check_id} marked as done` });
+        break;
+
+      case "uncheck":
+        let uncheck_id = interaction.options.getInteger("uncheck_id");
+        let uItem = await Checklist.getItem(uncheck_id - 1);
+        if (!uItem)
+          return interaction.reply({
+            content: "Item ID not found",
+            ephemeral: true,
+          });
+
+        Checklist.uncheckItem(uncheck_id - 1);
+        interaction.reply({ content: `Item ${uncheck_id} marked as not done` });
         break;
 
       case "edit":
-        let editId = interaction.options.getInteger("edit_item_id");
-        let editContent = interaction.options.getString("edit_item_content");
+        let editId = await interaction.options.getInteger("edit_item_id");
+        let editContent = await interaction.options.getString(
+          "edit_item_content"
+        );
+        let eItem = await Checklist.getItem(editId - 1);
+        if (!eItem)
+          return interaction.reply({
+            content: "Item ID not found",
+            ephemeral: true,
+          });
+
         await Checklist.editItem({
           id: editId - 1,
           content: editContent,
           creator: interaction.user.id,
-          completed: false,
+          completed: eItem.completed,
+        });
+
+        interaction.reply({
+          content: `Changed item ${editId} to ${editContent}`,
         });
         break;
 
