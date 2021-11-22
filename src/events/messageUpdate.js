@@ -8,18 +8,23 @@ module.exports = {
       );
       if (edit.channel.id == "770730379077353494") return; // Rules channel
 
-      const args = edit.content.split(/ +/);
+      if (await Filter.checkMessage(edit)) {
+        const embed = new MessageEmbed()
+          .setAuthor("Word Filtered")
+          .setDescription(edit.content)
+          .setColor("#FF0000");
+        channel.send({ embeds: [embed] });
 
-      for (let arg of args) {
-        if (await Filter.checkWord(arg)) {
-          const embed = new MessageEmbed()
-            .setAuthor("Word Filtered")
-            .setDescription(edit.content)
-            .setColor("#FF0000");
-          channel.send({ embeds: [embed] });
-          edit.delete();
-          return;
-        }
+        const dmEmbed = new MessageEmbed()
+          .setAuthor("Word Filtered")
+          .setDescription(
+            `Your message was deleted because it contained the filtered word \`${await Filter.findWordInMessage(
+              edit
+            )}\``
+          )
+          .setColor("#FF0000");
+        edit.author.send({ embeds: [dmEmbed] });
+        edit.delete();
       }
     });
   },
