@@ -8,6 +8,7 @@ class Voice {
     this.client = new DisTube(client, {
       searchSongs: 0,
       emitNewSongOnly: true,
+      nsfw: false,
     });
   }
   async init() {
