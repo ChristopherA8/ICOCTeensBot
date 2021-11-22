@@ -40,7 +40,8 @@ module.exports = {
       msg.channel.id !== "698594785803501629" && // staff chat
       msg.channel.id !== "818309077431746592" && // comm announcements
       msg.channel.id !== "698590945993555998" && // announcements
-      msg.channel.id !== "769966706667290634" // events
+      msg.channel.id !== "769966706667290634" && // events
+      msg.channel.id !== "698592596515225662" // Prayer Requests
     ) {
       person.level++;
       msg.reply(`You've leveled up to level **${curLevel}**!`);
