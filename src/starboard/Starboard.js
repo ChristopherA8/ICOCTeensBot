@@ -39,9 +39,7 @@ module.exports = class {
 
       const embed = new MessageEmbed()
         .setColor(foundStar.color)
-        .setDescription(
-          `${foundStar.description}\n\n[Link to message](${message.url})`
-        )
+        .setDescription(`${foundStar.description}`)
         .setAuthor(message.author.tag, message.author.displayAvatarURL())
         .setTimestamp()
         .setFooter(`⭐ ${newStarCount} | ${message.id}`)
