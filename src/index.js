@@ -13,7 +13,7 @@ client.on(`ready`, async () => {
   );
 
   setInterval(() => {
-    client.user.setActivity("house cleaning any%", { type: "PLAYING" });
+    client.user.setActivity("samurai", { type: "PLAYING" });
   }, 60 * 60 * 1000); // 1hr
 
   // Initialize database connection
