@@ -12,9 +12,9 @@ client.on(`ready`, async () => {
     `${chalk.blue.bold("[BOT]")} Logged in as ${chalk.green(client.user.tag)}`
   );
 
-  client.user.setActivity("samurai", { type: "PLAYING" });
+  client.user.setActivity("Alfheim Online", { type: "PLAYING" });
   setInterval(() => {
-    client.user.setActivity("samurai", { type: "PLAYING" });
+    client.user.setActivity("Alfheim Online", { type: "PLAYING" });
   }, 60 * 60 * 1000); // 1hr
 
   // Initialize database connection
