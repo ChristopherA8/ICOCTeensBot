@@ -5,7 +5,10 @@ module.exports = {
     .setName("clear")
     .setDescription("Bulk delete messages")
     .addIntegerOption((option) =>
-      option.setName("number").setDescription("Number of messages to clear")
+      option
+        .setName("number")
+        .setDescription("Number of messages to clear")
+        .setRequired(true)
     ),
   permissions: 5,
   async execute(interaction) {
