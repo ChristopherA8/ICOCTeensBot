@@ -2,8 +2,8 @@ module.exports = {
   event(client) {
     client.on("guildMemberAdd", (join) => {
       const { MessageEmbed } = require("discord.js");
-      if (join.guild.id !== `698590629344575500`) return;
-      const channel = join.guild.channels.cache.get(`698591277205422171`);
+      if (join.guild.id !== process.env.GUILD_ID) return;
+      const channel = join.guild.channels.cache.get(process.env.WELCOME_ID);
       channel.send(`Welcome <@${join.id}> to ICOC Teens!`);
       const welcomeEmbed = new MessageEmbed()
         .setTitle(`Welcome to the ICOC Teens Server`)
