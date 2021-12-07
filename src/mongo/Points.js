@@ -48,6 +48,13 @@ class Points {
       .toArray();
     return leaderboard;
   }
+  async getNotLeaderboard() {
+    const notLeaderboard = await this.collection
+      .find()
+      .sort({ points: 1 })
+      .toArray();
+    return notLeaderboard;
+  }
   async getLeader() {
     const leader = await this.collection.find().sort({ points: -1 }).toArray();
     return leader[0];
