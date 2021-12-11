@@ -7,7 +7,7 @@ require("dotenv").config();
 const mongo = require("./mongo/Mongo");
 const voice = require("./voice/Voice");
 const commands = require("./handlers/commands.js");
-const textCommands = require("./Interactions/Commands");
+const textCommands = require("./InteractionManagers/CommandManager");
 
 
 client.on(`ready`, async () => {

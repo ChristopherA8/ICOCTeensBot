@@ -73,6 +73,9 @@ module.exports = {
       }
 
       if (after.topic !== before.topic) {
+        if (after.id == process.env.MC_CONSOLE_ID) return;
+        if (after.id == process.env.MC_CHAT_ID) return;
+
         // embed(author, authorImage, title, description, fields, footer, image, color, thumbnail)
         channel.send({
           embeds: [
