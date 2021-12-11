@@ -6,6 +6,9 @@ const chalk = require("chalk");
 require("dotenv").config();
 const mongo = require("./mongo/Mongo");
 const voice = require("./voice/Voice");
+const commands = require("./handlers/commands.js");
+const textCommands = require("./Interactions/Commands");
+
 
 client.on(`ready`, async () => {
   console.log(
@@ -22,6 +25,9 @@ client.on(`ready`, async () => {
 
   // Initialize distube client
   await voice.init();
+
+  // Text command setup
+  await textCommands.init()
 
   // Run setup
   const files = fs
