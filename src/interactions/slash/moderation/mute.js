@@ -10,6 +10,12 @@ module.exports = {
         .setDescription("Member to mute")
         .setRequired(true)
     )
+    .addNumberOption((option) =>
+      option
+        .setName("time")
+        .setDescription("How long the user is timed out (in minutes)")
+        .setRequired(true)
+    )
     .addStringOption((option) =>
       option
         .setName("reason")
@@ -18,33 +24,23 @@ module.exports = {
     ),
   permissions: 5,
   async execute(interaction) {
-    const { Permissions, MessageEmbed } = require("discord.js");
-    const muteRole = interaction.guild.roles.cache.get(
-      process.env.MUTED_ROLE_ID
-    );
+    const { Permissions } = require("discord.js");
 
     let person = interaction.options.getMember("member");
+    let time = interaction.options.getNumber("time");
     let reason = interaction.options.getString("reason");
 
     if (person.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
       interaction.reply({ content: "Don't mute an admin", ephemeral: true });
     } else if (reason) {
-      person.roles.add(muteRole, reason);
+      await person.timeout(time * 60 * 1000, reason);
 
-      const muteEmbed = new MessageEmbed()
-        .setTitle("Muted")
-        .addFields(
-          { name: "User", value: `<@${person.user.id}>` },
-          { name: "Reason", value: reason }
-        );
-      interaction.reply({ embeds: [muteEmbed] });
-
-      let reply = await interaction.fetchReply();
-      setTimeout(() => {
-        reply.delete();
-      }, 6000);
+      interaction.reply({
+        content: `Muted <@${person.user.id}> for \`${reason}\``,
+        ephemeral: false,
+      });
     } else {
-      person.roles.add(muteRole);
+      await person.timeout(time * 60 * 1000, reason);
       interaction.reply(`Muted <@${person.user.id}>`);
     }
   },

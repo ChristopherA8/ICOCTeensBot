@@ -18,11 +18,6 @@ module.exports = {
     ),
   permissions: 5,
   async execute(interaction) {
-    const { Permissions, MessageEmbed } = require("discord.js");
-    const muteRole = interaction.guild.roles.cache.get(
-      process.env.MUTED_ROLE_ID
-    );
-
     let person = interaction.options.getMember("member");
     let reason = interaction.options.getString("reason");
 
@@ -32,22 +27,13 @@ module.exports = {
         ephemeral: true,
       });
     } else if (reason) {
-      person.roles.remove(muteRole, reason);
-
-      const unmuteEmbed = new MessageEmbed()
-        .setTitle("Unmuted")
-        .addFields(
-          { name: "User", value: `<@${person.user.id}>` },
-          { name: "Reason", value: reason }
-        );
-      interaction.reply({ embeds: [unmuteEmbed] });
-
-      let reply = await interaction.fetchReply();
-      setTimeout(() => {
-        reply.delete();
-      }, 6000);
+      await person.timeout(null, reason);
+      interaction.reply({
+        content: `Unmuted <@${person.user.id}> for \`${reason}\``,
+        ephemeral: false,
+      });
     } else {
-      person.roles.remove(muteRole);
+      await person.timeout(null, reason);
       interaction.reply(`Unmuted <@${person.user.id}>`);
     }
   },
