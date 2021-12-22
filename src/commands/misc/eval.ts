@@ -1,7 +1,7 @@
 module.exports = {
   name: "eval",
   permissions: 9,
-  execute(msg, args) {
+  async execute(msg, args) {
     const { MessageEmbed } = require("discord.js");
 
     var input = args.join(" ");
@@ -16,9 +16,9 @@ module.exports = {
         },
         {
           name: "Output:",
-          value: input ? `\`\`\`js\n${eval(input)}\`\`\`` : "```No Input```",
+          value: input ? `\`\`\`js\n${await eval(input)}\`\`\`` : "```No Input```",
         }
       );
-    msg.channel.send({ embeds: [embed] });
+    await msg.channel.send({ embeds: [embed] });
   },
 };
