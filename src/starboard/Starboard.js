@@ -10,6 +10,7 @@ module.exports = class {
     if (reaction.emoji.name !== "⭐") return;
     if (message.author.id === user.id) return; // You cannot star your own messages
     if (message.author.bot) return; // You cannot star a bots message
+    if (message.channel == process.env.POLL_CHANNEL_ID) return;
 
     let reactionCount = reaction.users.cache.size;
 
