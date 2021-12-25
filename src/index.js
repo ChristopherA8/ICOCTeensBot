@@ -9,15 +9,14 @@ const voice = require("./voice/Voice");
 const commands = require("./handlers/commands.js");
 const textCommands = require("./InteractionManagers/CommandManager");
 
-
 client.on(`ready`, async () => {
   console.log(
     `${chalk.blue.bold("[BOT]")} Logged in as ${chalk.green(client.user.tag)}`
   );
 
-  client.user.setActivity("muda muda muda muda...", { type: "PLAYING" });
+  client.user.setActivity("shrek 2", { type: "WATCHING" });
   setInterval(() => {
-    client.user.setActivity("muda muda muda muda...", { type: "PLAYING" });
+    client.user.setActivity("shrek 2", { type: "WATCHING" });
   }, 60 * 60 * 1000); // 1hr
 
   // Initialize database connection
@@ -27,7 +26,7 @@ client.on(`ready`, async () => {
   await voice.init();
 
   // Text command setup
-  await textCommands.init()
+  await textCommands.init();
 
   // Run setup
   const files = fs
