@@ -37,6 +37,8 @@ module.exports = {
 
     if (
       person.level < curLevel &&
+      msg.channel.type !== "GUILD_PUBLIC_THREAD" &&
+      msg.channel.type !== "GUILD_PRIVATE_THREAD" &&
       msg.channel.id !== "698594785803501629" && // staff chat
       msg.channel.id !== "818309077431746592" && // comm announcements
       msg.channel.id !== "698590945993555998" && // announcements
