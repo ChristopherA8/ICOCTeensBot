@@ -1,9 +1,8 @@
-const CommandManager = require('./InteractionManagers/CommandManager')
+const CommandManager = require("./InteractionManagers/CommandManager");
 
 CommandManager.addCommand({
-    name:"urmom",
-    async execute(msg) {
-        msg.reply("urmom")
-        CommandManager.log("urmom", "urmom")
-    }
-})
+  name: "urmom",
+  async execute(msg) {
+    CommandManager.log("urmom", "urmom");
+  },
+});
