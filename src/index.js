@@ -8,6 +8,7 @@ const mongo = require("./mongo/Mongo");
 const voice = require("./voice/Voice");
 const commands = require("./handlers/commands.js");
 const textCommands = require("./InteractionManagers/CommandManager");
+const logs = require("./logs/Logs");
 
 client.on(`ready`, async () => {
   console.log(
@@ -27,6 +28,9 @@ client.on(`ready`, async () => {
 
   // Text command setup
   await textCommands.init();
+
+  // Setup command logging
+  await logs.init();
 
   // Run setup
   const files = fs

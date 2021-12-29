@@ -4,6 +4,7 @@ module.exports = {
 
     if (!client.slash.has(interaction.commandName)) return;
     const slash = client.slash.get(interaction.commandName);
+    const logs = require("../logs/Logs");
 
     // if (
     //   interaction.channel.id == "803446581222309888" ||
@@ -16,6 +17,7 @@ module.exports = {
 
     try {
       slash.execute(interaction);
+      logs.logSlash(interaction);
       /*
        * 1. @everyone
        * 2. ICOC Goat

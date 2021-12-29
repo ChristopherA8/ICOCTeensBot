@@ -1,6 +1,7 @@
 module.exports = {
   async commandHandler(msg, prefix) {
-    const { Permissions, MessageFlags } = require("discord.js");
+    const { Permissions } = require("discord.js");
+    const logs = require("../logs/Logs");
 
     if (msg.content.startsWith(prefix)) {
       const args = msg.content.slice(prefix.length).split(/ +/);
@@ -24,6 +25,7 @@ module.exports = {
         switch (command.permissions) {
           case 1:
             command.execute(msg, args);
+            logs.logCommand(command, msg.member);
             break;
           case 2:
             if (
