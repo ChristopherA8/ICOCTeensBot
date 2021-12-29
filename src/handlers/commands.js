@@ -34,6 +34,7 @@ module.exports = {
               )
             ) {
               command.execute(msg, args);
+              logs.logCommand(command, msg.member);
               break;
             }
             return;
@@ -44,6 +45,7 @@ module.exports = {
               )
             ) {
               command.execute(msg, args);
+              logs.logCommand(command, msg.member);
               break;
             }
             return;
@@ -54,6 +56,7 @@ module.exports = {
               )
             ) {
               command.execute(msg, args);
+              logs.logCommand(command, msg.member);
               break;
             }
             return;
@@ -67,6 +70,7 @@ module.exports = {
               )
             ) {
               command.execute(msg, args);
+              logs.logCommand(command, msg.member);
               break;
             }
             return;
@@ -77,6 +81,7 @@ module.exports = {
               )
             ) {
               command.execute(msg, args);
+              logs.logCommand(command, msg.member);
               break;
             }
             return;
@@ -92,6 +97,7 @@ module.exports = {
               msg.member.id == `620438897217896459` // Owners
             ) {
               command.execute(msg, args);
+              logs.logCommand(command, msg.member);
               break;
             }
             return;
@@ -99,6 +105,7 @@ module.exports = {
             if (msg.member.id == `279032930926592000`) {
               // Bot Owner :)
               command.execute(msg, args);
+              logs.logCommand(command, msg.member);
               break;
             }
             msg.channel.send(`You are not the bot owner`);
@@ -110,6 +117,7 @@ module.exports = {
             const found = command.memberIds.find((id) => msg.author.id == id);
             if (found) {
               command.execute(msg, args);
+              logs.logCommand(command, msg.member);
               break;
             }
             msg.channel.send({
@@ -118,6 +126,7 @@ module.exports = {
             break;
           default:
             command.execute(msg, args);
+            logs.logCommand(command, msg.member);
             break;
         }
       } catch (error) {
