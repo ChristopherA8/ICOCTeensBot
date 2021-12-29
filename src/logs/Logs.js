@@ -20,7 +20,7 @@ class Logs {
     let date = new Date();
     let stream = fs.createWriteStream(this.commandLogPath, { flags: "a" });
     stream.write(
-      `[${date.getMonth()}/${date.getDate()}/${date.getFullYear()}] ${
+      `[${date.getMonth()}/${date.getDate()}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} UTC] ${
         member.user.tag
       } used !${name}\n`
     );
@@ -31,7 +31,7 @@ class Logs {
     let date = new Date();
     let stream = fs.createWriteStream(this.commandLogPath, { flags: "a" });
     stream.write(
-      `[${date.getMonth()}/${date.getDate()}/${date.getFullYear()}] ${
+      `[${date.getMonth()}/${date.getDate()}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} UTC] ${
         interaction.user.tag
       } used /${interaction.commandName}\n`
     );
