@@ -12,6 +12,6 @@ module.exports = {
         SEND_MESSAGES: null,
       }
     );
-    interaction.reply("Channel locked");
+    interaction.reply("Channel unlocked");
   },
 };
